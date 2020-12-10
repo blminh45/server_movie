@@ -77,7 +77,7 @@
 </section>
 
 <script>
-    document.getElementsByClassName(".myfunction").click(function() {
+    $(".myfunction").click(function() {
         var row = $(this).closest("tr");    // Find the row
         
         var phim = {
