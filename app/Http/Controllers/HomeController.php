@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\phim;
 
 class HomeController extends Controller
 {
@@ -23,12 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+         $phims = phim::all();
+
+        return response()->json($phims, Response::HTTP_OK);
+        //return view('home');
     }
 
     public function danh_sach_phim()
     {
-        return view('pages.danh-sach-phim');
+        return new PhimResource(Phim::all());
+        // return view('pages.danh-sach-phim');
     }
 
     public function them_phim()
