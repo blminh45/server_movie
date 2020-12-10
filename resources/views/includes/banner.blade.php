@@ -16,9 +16,8 @@
                         <span>Quản lí phim</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ url('phim/danh-sach-phim') }}">Danh sách phim</a></li>
-                        <li><a href="/phim/them-phim">Thêm phim</a></li>
-                        <li><a href="/phim/cap-nhat-phim">Cập nhật phim</a></li>
+                        <li><a href="{{ route('danh-sach-phim') }}">Danh sách phim</a></li>
+                        <li><a href="{{ route('them-phim') }}">Thêm phim</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -27,7 +26,7 @@
                         <span>Quản lí rạp</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/rap-phim/danh-sach-rap">Danh sách rạp</a></li>
+                        <li><a href="{{ url('rap-phim/danh-sach-rap') }}">Danh sách rạp</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -36,7 +35,7 @@
                         <span>Quản lí thành viên</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/thanh-vien/danh-sach-thanh-vien">Danh sách thành viên</a></li>
+                        <li><a href="{{ url('thanh-vien/danh-sach-thanh-vien') }}">Danh sách thành viên</a></li>
                     </ul>
                 </li>
 

@@ -2,7 +2,8 @@
 @section('noi-dung')
 
 <section class="wrapper">
-    <form>
+    <form method="get" action="#">
+    @csrf
         <div class="form-group">
             <label for="tenPhim">Tên phim</label>
             <input type="text" class="form-control" id="tenPhim">
@@ -36,6 +37,10 @@
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Example textarea</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn-primary">Thêm phim</button>
+            <button type="submit" class="btn-warning">Hủy</button>
         </div>
     </form>
 </section>

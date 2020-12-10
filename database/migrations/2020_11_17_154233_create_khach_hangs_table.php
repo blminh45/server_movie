@@ -18,9 +18,7 @@ class CreateKhachHangsTable extends Migration
             $table->string('ten');
             $table->string('so_dien_thoai');
             $table->string('email');
-            $table->tinyInteger('gioi_tinh');
-            $table->string('mat_khau');
-            $table->tinyInteger('trang_thai');
+            $table->smallint('gioi_tinh');
             $table->timestamps();
         });
     }

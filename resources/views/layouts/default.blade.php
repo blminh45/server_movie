@@ -46,7 +46,6 @@
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('js/jquery.nicescroll.js') }}"></script>
-    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="{{ asset('js/flot-chart/excanvas.min.js') }}"></script><![endif]-->
     <script src="{{ asset('js/jquery.scrollTo.js') }}"></script>
     <!-- morris JavaScript -->  
     <script>
@@ -109,7 +108,6 @@
 
             $('#mycalendar').monthly({
                 mode: 'event',
-
             });
 
             $('#mycalendar2').monthly({

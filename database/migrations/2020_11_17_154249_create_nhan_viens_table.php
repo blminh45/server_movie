@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChiNhanhsTable extends Migration
+class CreateNhanViensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateChiNhanhsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chi_nhanhs', function (Blueprint $table) {
+        Schema::create('nhan_viens', function (Blueprint $table) {
             $table->id();
-            $table->string('ten_chi_nhanh');
+            $table->string('ten');
             $table->string('dia_chi');
+            $table->string('sdt');
+            $table->smallint('gioi_tinh');
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateChiNhanhsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chi_nhanhs');
+        Schema::dropIfExists('nhan_viens');
     }
 }
