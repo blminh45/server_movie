@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-
+$DATABASE_URL=parse_url('postgres://rewcucxgbhmrek:9bb72134a2f349dc980dad4d6c5275709cb6003a3527010c7fdd5befabb006d0@ec2-34-232-24-202.compute-1.amazonaws.com:5432/dfn28qhc0v40ji');
 return [
 
     /*
@@ -65,12 +65,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('postgres://rewcucxgbhmrek:9bb72134a2f349dc980dad4d6c5275709cb6003a3527010c7fdd5befabb006d0@ec2-34-232-24-202.compute-1.amazonaws.com:5432/dfn28qhc0v40ji'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => $DATABASE_URL["host"],
+            'port' => $DATABASE_URL["port"],
+            'database' => ltrim($DATABASE_URL["path"], "/"),
+            'username' => $DATABASE_URL["user"],
+            'password' => $DATABASE_URL["pass"],
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
