@@ -5,17 +5,16 @@
     <div class="table-agile-info">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Rạp chiếu phim
+                Thành viên
             </div>
             <div>
                 <table class="table" ui-jq="footable" ui-options='{ "paging": { "enabled": true }, "filtering": { "enabled": true }, "sorting": { "enabled": true }}'>
                     <thead>
                         <tr>
                             <th data-breakpoints="xs">ID</th>
-                            <th>Tên rạp</th>
-                            <th data-breakpoints="xs">Địa chỉ</th>
-                            <th>Số screen</th>
-
+                            <th>Tên</th>
+                            <th>Số điện thoại</th>
+                            <th data-breakpoints="xs">Email</th>
                             <th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th>
                         </tr>
                     </thead>
