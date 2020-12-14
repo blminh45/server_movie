@@ -22,9 +22,9 @@
                     <tbody>
                         <tr data-expanded="true">
                             <td>1</td>
-                            <td>Dennise</td>
-                            <td>Fuhrman</td>
-                            <td>High School History Teacher</td>
+                            <td>Quan 1</td>
+                            <td>65 Huynh Thuc Khang</td>
+                            <td>8</td>
 
                             <td>July 25th 1960</td>
                         </tr>
