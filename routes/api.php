@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix'=>'phim'], function (){
+    Route::get('/danh-sach-phim', 'ApiController@danh_sach_phim')->name('danh-sach-phim');
+    Route::get('/tim-phim/{id}', 'ApiController@tim_phim')->name('tim-phim');
+    Route::post('/them-phim', 'ApiController@them_phim')->name('them-phim');
+    Route::put('/sua-phim/{id}', 'ApiController@sua_phim')->name('sua-phim');
+});
+
+Route::group(['prefix'=>'rap-phim'], function (){
+    Route::get('danh-sach-rap', 'ApiController@danh-sach-rap')->name('danh-sach-rap');
+});

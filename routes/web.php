@@ -25,11 +25,13 @@ Route::get('dang-nhap', function () {
 //Auth::routes();
 
 Route::group(['prefix'=>'phim'], function () {
-    Route::get('danh-sach-phim', 'Api\PhimController@index')->name('danh-sach-phim');
+    Route::get('danh-sach-phim', 'HomeController@danh_sach_phim')->name('danh-sach-phim');
 
-    // Route::get('danh-sach-phim', 'HomeController@danh_sach_phim')->name('danh-sach-phim');
+    Route::get('get-them-phim', function(){
+        return view('pages.them-phim');
+    })->name('get-them-phim');
 
-    Route::get('them-phim', 'HomeController@them_phim')->name('them-phim');
+    Route::post('them-phim', 'HomeController@them_phim')->name('them-phim');
 
     Route::get('cap-nhat-phim', 'HomeController@cap_nhat_phim')->name('cap-nhat-phim');
 });

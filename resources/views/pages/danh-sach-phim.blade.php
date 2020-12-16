@@ -7,10 +7,12 @@
         private $ten_phim;
         private $thoi_luong;
         private $the_loai;
+        private $hinh_anh;
 
-        public function __construct($ten_phim, $thoi_luong, $the_loai)
+        public function __construct($ten_phim, $hinh_anh, $thoi_luong, $the_loai)
         {
             $this->ten_phim = $ten_phim;
+            $this->hinh_anh = $hinh_anh;
             $this->thoi_luong = $thoi_luong;
             $this->the_loai = $the_loai;
         }
@@ -19,17 +21,21 @@
             return $this->ten_phim;
         }
 
+        public function getHinhAnh(){
+            return $this->hinh_anh;
+        }
+
         public function getThoiLuong(){
             return $this->thoi_luong;
         }
 
         public function getTheLoai(){
             return $this->the_loai;
-        }        
+        }
     }
 
-    $phim1 = new phim("Avatar", 120, "Viễn tưởng");
-    $phim2 = new phim("Koe Katachi", 137, "Hoạt hình");
+    $phim1 = new phim("Avatar", "/images/1.png", 120, "Viễn tưởng");
+    $phim2 = new phim("Koe Katachi", "", 137, "Hoạt hình");
 
     $phims = array($phim1, $phim2);
 
@@ -43,6 +49,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Tên phim</th>
+                    <th scope="col">Hình ảnh</th>
                     <th scope="col">Thời lượng</th>
                     <th scope="col">Thể loại</th>
                     <th scope="col">Sửa</th>
@@ -54,6 +61,7 @@
                     <tr>
                         <th class="id" scope="row">{{ $i++ }}</th>
                         <td class="ten-phim">{{ $phim->getTenPhim() }}</td>
+                        <td class="hinh-anh"><img src="{{ $phim->getHinhAnh() }}" alt=""></td>
                         <td class="thoi-luong">{{ $phim->getThoiLuong() }}</td>
                         <td class="the-loai">{{ $phim->getTheLoai() }}</td>
                         <td>

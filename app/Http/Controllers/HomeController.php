@@ -23,23 +23,27 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-         $phims = phim::all();
-
-        return response()->json($phims, Response::HTTP_OK);
-        //return view('home');
-    }
 
     public function danh_sach_phim()
     {
-        return new PhimResource(Phim::all());
-        // return view('pages.danh-sach-phim');
+        return view('pages.danh-sach-phim');
     }
 
-    public function them_phim()
+    public function them_phim(Request $req)
     {
-        return view('pages.them-phim');
+        if($req->hasFile('hinh')) {
+            $file = $req->file('hinh');
+            $filename = $file->getClientOriginalName('hinh');
+            $fileExt = $file->getClientOriginalExtension('hinh');
+            $file->move('images', $filename);
+        }
+
+        $ten_phim = $req->TenPhim;
+        $thoi_luong = $req->ThoiLuong;
+        $url_hinh = 'images/'.$filename;
+
+        return view('pages.danh-sach-phim');
+        return $req->url();
     }
 
     public function cap_nhat_phim()
@@ -47,7 +51,7 @@ class HomeController extends Controller
         return view('pages.cap-nhat-phim');
     }
 
-    public function danh_sach_rap() 
+    public function danh_sach_rap()
     {
         return view('pages.danh-sach-rap');
     }

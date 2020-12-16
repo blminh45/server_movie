@@ -19,6 +19,7 @@ class Phim extends JsonResource
         return [
             'id' => $this->id,
             'ten_phim' => $this->ten_phim,
+            'id_the_loai' => $this->id_the_loai,
             'thoi_luong' => $this->thoi_luong
         ];
     }

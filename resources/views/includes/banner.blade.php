@@ -17,7 +17,7 @@
                     </a>
                     <ul class="sub">
                         <li><a href="{{ route('danh-sach-phim') }}">Danh sách phim</a></li>
-                        <li><a href="{{ route('them-phim') }}">Thêm phim</a></li>
+                        <li><a href="{{ route('get-them-phim') }}">Thêm phim</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
