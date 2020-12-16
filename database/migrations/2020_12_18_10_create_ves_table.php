@@ -14,11 +14,15 @@ class CreateVesTable extends Migration
     public function up()
     {
         Schema::create('ves', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_suat_chieu');
-            $table->integer('id_khach_hang');
-            $table->boolean('trang_thai');
+            $table->increments('id');
+            $table->integer('id_suat_chieu')->unsigned();
+            $table->integer('id_khach_hang')->unsigned();
+            $table->boolean('trang_thai')->default(1);
             $table->timestamps();
+
+            //foreign key
+            $table->foreign('id_suat_chieu')->references('id')->on('suat_chieus');
+            $table->foreign('id_khach_hang')->references('id')->on('khach_hangs');
         });
     }
 

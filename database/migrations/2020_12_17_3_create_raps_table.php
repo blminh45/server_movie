@@ -14,11 +14,13 @@ class CreateRapsTable extends Migration
     public function up()
     {
         Schema::create('raps', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->tinyInteger('so_luong_ghe');
-            $table->integer('id_chi_nhanh');
-            $table->tinyInteger('trang_thai');
+            $table->integer('id_chi_nhanh')->unsigned();
+            $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
+
+            $table->foreign('id_chi_nhanh')->references('id')->on('chi_nhanhs');
         });
     }
 

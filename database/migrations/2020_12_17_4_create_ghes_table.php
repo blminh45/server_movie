@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDanhSachGhesTable extends Migration
+class CreateGhesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateDanhSachGhesTable extends Migration
      */
     public function up()
     {
-        Schema::create('danh_sach_ghes', function (Blueprint $table) {
-            $table->id();
+        Schema::create('ghes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->char('hang',1);
+            $table->tinyInteger('cot');
+            $table->boolean('trang_thai')->default(1);
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateDanhSachGhesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('danh_sach_ghes');
+        Schema::dropIfExists('ghes');
     }
 }

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class suat_chieu extends Model
 {
-    //
+    protected $fillable = [];
 }

@@ -14,13 +14,17 @@ class CreateSuatChieusTable extends Migration
     public function up()
     {
         Schema::create('suat_chieus', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_rap');
-            $table->integer('id_phim');
+            $table->increments('id');
+            $table->integer('id_rap')->unsigned();
+            $table->integer('id_phim')->unsigned();
             $table->date('ngay_chieu');
-            $table->time('gio_chieu');
-            $table->tinyInteger('trang_thai');
+            $table->time('gio_chieu')->nullable();
+            $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
+
+            //foreign key
+            $table->foreign('id_rap')->references('id')->on('raps');
+            $table->foreign('id_phim')->references('id')->on('phims');
         });
     }
 
