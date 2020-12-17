@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\phim;
+use App\the_loai;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,8 @@ class HomeController extends Controller
 
     public function danh_sach_phim()
     {
-        return view('pages.danh-sach-phim');
+        $phims = phim::all();
+        return view('pages.danh-sach-phim', ['phims'=>$phims]);
     }
 
     public function them_phim(Request $req)
