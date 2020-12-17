@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\phim;
+use App\the_loai;
 
 class ApiController extends Controller
 {
@@ -34,16 +35,14 @@ class ApiController extends Controller
         return response()->json($phim, 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($id, Request $req)
     {
         $phim = phim::where('id', $id)->update($req->all());
 
         return response()->json($phim, 200);
+    }
+
+    public function danh_sach_the_loai(){
+        return response()->json(the_loai::all(), 200);
     }
 }

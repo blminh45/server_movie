@@ -25,6 +25,8 @@ Route::group(['prefix'=>'phim'], function (){
     Route::put('/sua-phim/{id}', 'ApiController@sua_phim')->name('sua-phim');
 });
 
+Route::get('/danh-sach-the-loai', 'ApiController@danh_sach_the_loai')->name('danh-sach-the-loai');
+
 Route::group(['prefix'=>'rap-phim'], function (){
     Route::get('danh-sach-rap', 'ApiController@danh-sach-rap')->name('danh-sach-rap');
 });
