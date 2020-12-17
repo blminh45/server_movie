@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ghe extends Model
 {
-    protected $fillable = [];
+    protected $fillable = ['id','hang','cot','trang_thai'];
 }

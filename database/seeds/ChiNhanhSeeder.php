@@ -12,7 +12,6 @@ class ChiNhanhSeeder extends Seeder
      */
     public function run()
     {
-        
         DB::table('chi_nhanhs')->insert([
             ['ten_chi_nhanh'=>'Galaxy','dia_chi'=>'Hà nội'],
             ['ten_chi_nhanh'=>'Galaxy','dia_chi'=>'TP Hồ Chí Minh'],
