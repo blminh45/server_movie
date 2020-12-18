@@ -9,33 +9,70 @@
                         <span>Home</span>
                     </a>
                 </li>
-                
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
                         <span>Quản lí phim</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('danh-sach-phim') }}">Danh sách phim</a></li>
-                        <li><a href="{{ route('get-them-phim') }}">Thêm phim</a></li>
+                        <li><a href="{{ url('phim/danh-sach-phim') }}">Danh sách phim</a></li>
+                        <li><a href="/phim/them-phim">Thêm phim</a></li>
                     </ul>
                 </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Quản lí chi nhánh</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/chi-nhanh/danh-sach-chinhanh">Danh sách chi nhánh</a></li>
+                        <li><a href="/chi-nhanh/them-chinhanh">Thêm chi nhánh</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Quản lí thể loại</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/the-loai/danh-sach-theloai">Danh sách thể loại</a></li>
+                        <li><a href="/the-loai/them-theloai">Thêm thể loại</a></li>
+                    </ul>
+                </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
                         <span>Quản lí rạp</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ url('rap-phim/danh-sach-rap') }}">Danh sách rạp</a></li>
+                        <li><a href="/rap-phim/danh-sach-rap">Danh sách rạp</a></li>
+                        <li><a href="/rap-phim/them-rap">Thêm rạp</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>Quản lí thành viên</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ url('thanh-vien/danh-sach-thanh-vien') }}">Danh sách thành viên</a></li>
+                        <li><a href="/thanh-vien/danh-sach-thanh-vien">Danh sách thành viên</a></li>
+                        <li><a href="/thanh-vien/them-thanhvien">Thêm thành viên</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-tasks"></i>
+                        <span>Quản lí suất chiếu</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/suat-chieu/danh-sach-suatchieu">Danh sách suất chiếu</a></li>
+                        <li><a href="/suat-chieu/them-suatchieu">Thêm suất chiếu</a></li>
                     </ul>
                 </li>
 
@@ -45,7 +82,7 @@
                         <span>Lịch chiếu phim</span>
                     </a>
                 </li>
-                
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-envelope"></i>
@@ -56,6 +93,7 @@
                         <li><a href="/mail_compose">Compose Mail</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
@@ -66,6 +104,7 @@
                         <li><a href="/flot_chart">Flot Charts</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
@@ -76,6 +115,7 @@
                         <li><a href="/vector_map">Vector Map</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-glass"></i>
@@ -87,6 +127,7 @@
                         <li><a href="registration">Registration</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="login">
                         <i class="fa fa-user"></i>

@@ -2,92 +2,47 @@
 @section('noi-dung')
 
 <section class="wrapper">
-    <div class="table-agile-info">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Thành viên
-            </div>
-            <div>
-                <table class="table" ui-jq="footable" ui-options='{ "paging": { "enabled": true }, "filtering": { "enabled": true }, "sorting": { "enabled": true }}'>
-                    <thead>
-                        <tr>
-                            <th data-breakpoints="xs">ID</th>
-                            <th>Tên</th>
-                            <th>Số điện thoại</th>
-                            <th data-breakpoints="xs">Email</th>
-                            <th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-expanded="true">
-                            <td>1</td>
-                            <td>Dennise</td>
-                            <td>Fuhrman</td>
-                            <td>High School History Teacher</td>
+    <h2 class="text-center title-h2">DANH SÁCH THÀNH VIÊN</h2>
 
-                            <td>July 25th 1960</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Elodia</td>
-                            <td>Weisz</td>
-                            <td>Wallpaperer Helper</td>
+    <form class="form-inline bg-dark search-tv" action="">
+        <input class="form-control mr-2" type="text" placeholder="Search">
+        <button class="btn btn-success" type="submit">Search</button>
+    </form>
 
-                            <td>March 30th 1982</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Raeann</td>
-                            <td>Haner</td>
-                            <td>Internal Medicine Nurse Practitioner</td>
+    <table class="table table-all">
+        <thead class="thead-dark table-all-dark">
+            <tr>
+                <th scope="col">Tên</th>
+                <th scope="col">Ảnh</th>
+                <th scope="col">Địa chỉ</th>
+                <th scope="col">Số điện thoại</th>
+                <th scope="col">Email</th>
+                <th scope="col">Giới tính</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
 
-                            <td>February 26th 1966</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Junie</td>
-                            <td>Landa</td>
-                            <td>Offbearer</td>
-
-                            <td>March 29th 1966</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Solomon</td>
-                            <td>Bittinger</td>
-                            <td>Roller Skater</td>
-
-                            <td>September 22nd 1964</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Bar</td>
-                            <td>Lewis</td>
-                            <td>Clown</td>
-
-                            <td>August 4th 1991</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Usha</td>
-                            <td>Leak</td>
-                            <td>Ships Electronic Warfare Officer</td>
-
-                            <td>November 20th 1979</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Lorriane</td>
-                            <td>Cooke</td>
-                            <td>Technical Services Librarian</td>
-
-                            <td>April 7th 1969</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+        <tbody>
+            @foreach($dskhachhang as $item)
+            <tr>
+                <td>{{$item->ten}}</td>
+                <td> <img style="width:100px; height:100px;" src="/images/{{$item->anh_dai_dien}}"></td>
+                <td>{{$item->dia_chi}}</td>
+                <td>{{$item->so_dien_thoai}}</td>
+                <td>{{$item->email}}</td>
+                <td>{{$item->gioi_tinh}}</td>
+                <td>
+                    <a type="submit" href="/thanh-vien/cap-nhat-thanhvien/{{$item->id}}"
+                        class="btn btn-warning">Update</a>
+                </td>
+                <td>
+                    <button class="btn btn-secondary" style="background-color: #606060; color: #fff;">Delete</button>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </section>
 
 <!-- footer -->
