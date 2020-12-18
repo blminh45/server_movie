@@ -37,7 +37,6 @@
                 <div class="form-group">
                     <label for="poster">Tải ảnh lên</label>
                     <input type="file" class="form-control-file" id="poster" name="poster" value="{{$capnhatphim->hinh_anh}}">
-
                     <img style="width:40%; " src="/images/{{$capnhatphim->hinh_anh}}">
                 </div>
 
