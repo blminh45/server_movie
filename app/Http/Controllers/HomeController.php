@@ -304,7 +304,6 @@ class HomeController extends Controller
         return redirect()->action('HomeController@//dsSuatChieu');
     }
 
-    // chưa làm <!-- thêm vào action /{{ $news->id }} và thêm thẻ <input type="hidden" name="id" value="{{ $news->id }}"> -->
     public function ThemVe(Request $request)
     {
         $phims = new phim;

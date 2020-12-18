@@ -36,7 +36,11 @@
 
                 <div class="form-group">
                     <label for="poster">Tải ảnh lên</label>
+<<<<<<< HEAD
                     <input type="file" class="form-control-file" id="poster" name="poster"
+=======
+                    <input type="file" class="form-control-file" id="poster" name="hinh_anh"
+>>>>>>> f525250fcacf9d7f1e97dceaef1d8adc7628965d
                         value="{{$capnhatphim->hinh_anh}}">
 
                     <img style="width:40%; " src="/images/{{$capnhatphim->hinh_anh}}">
