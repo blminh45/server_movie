@@ -9,7 +9,7 @@
             @csrf
                 <div class="form-group">
                     <label for="txtname">Tên chi nhánh</label>
-                    <input type="text" class="form-control" id="txtname" name="tentheloai" value={{$dstheloai->ten_the_loai}}>
+                    <input type="text" class="form-control" id="txtname" name="tentheloai" value="{{$dstheloai->ten_the_loai}}">
                     <small id="namemovie" class="form-text text-danger"> Vui lòng nhập tên chi nhánh!</small>
                   </div>       
                   <button type="submit">Gửi</button> 

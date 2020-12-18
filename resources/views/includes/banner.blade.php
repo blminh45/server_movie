@@ -9,7 +9,7 @@
                         <span>Home</span>
                     </a>
                 </li>
-                
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
@@ -20,6 +20,7 @@
                         <li><a href="/phim/them-phim">Thêm phim</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
@@ -30,6 +31,7 @@
                         <li><a href="/chi-nhanh/them-chinhanh">Thêm chi nhánh</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
@@ -40,6 +42,7 @@
                         <li><a href="/the-loai/them-theloai">Thêm thể loại</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-th"></i>
@@ -50,6 +53,7 @@
                         <li><a href="/rap-phim/them-rap">Thêm rạp</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
@@ -60,6 +64,7 @@
                         <li><a href="/thanh-vien/them-thanhvien">Thêm thành viên</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
@@ -70,13 +75,14 @@
                         <li><a href="/suat-chieu/them-suatchieu">Thêm suất chiếu</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a class="active" href="/">
                         <i class="fa fa-dashboard"></i>
                         <span>Lịch chiếu phim</span>
                     </a>
                 </li>
-                
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-envelope"></i>
@@ -87,6 +93,7 @@
                         <li><a href="/mail_compose">Compose Mail</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
@@ -97,6 +104,7 @@
                         <li><a href="/flot_chart">Flot Charts</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class=" fa fa-bar-chart-o"></i>
@@ -107,6 +115,7 @@
                         <li><a href="/vector_map">Vector Map</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-glass"></i>
@@ -118,6 +127,7 @@
                         <li><a href="registration">Registration</a></li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="login">
                         <i class="fa fa-user"></i>

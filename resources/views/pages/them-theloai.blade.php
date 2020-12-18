@@ -5,7 +5,7 @@
     <div class="container">
         <h2 class="title-h2 add-movie">THÊM THỂ LOẠI</h2>
         <form action='them-theloai' METHOD="POST">
-        @csrf
+            @csrf
             <div class="form-group">
                 <label for="txttheloai">Tên thể loại</label>
                 <input type="text" class="form-control" id="txttheloai" name="tentheloai">
@@ -15,4 +15,5 @@
         </form>
     </div>
 </section>
+
 @endsection
