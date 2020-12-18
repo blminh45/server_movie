@@ -113,11 +113,20 @@ class HomeController extends Controller
     }
     public function ThemPhim(Request $request)
     {
+        $url="g8.jpg";
+        if($request->hasFile('poster')) {
+            $file = $request->file('poster');
+            $filename = $file->getClientOriginalName('poster');
+            $fileExt = $file->getClientOriginalExtension('poster');
+            $file->move('images', $filename);
+            $url = $filename;
+        }
+
         $phims = new phim;
         $phims->ten_phim = $request->tenphim;
-        $phims->hinh_anh = $request->poster; 
+        $phims->hinh_anh = $url;
         $phims->id_the_loai = "1"; 
-        $phims->thoi_luong = $request->thoiluong; 
+        $phims->thoi_luong = $request->thoiluong;
         $newday=date("Y-m-d",strtotime($request->ngaykhoicchieu));
         $phims->khoi_chieu = $newday;
         $phims->tom_tat = $request->tomtat;

@@ -2997,6 +2997,7 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
     font-size: 14px;
 }
 }
+
 @media (max-width: 375px){
 .agile-info {
     padding: 3em 2em 8.95em;
@@ -3143,4 +3144,5 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
 }
 .chart_agile_bottom {
     padding: 0;
+}
 }

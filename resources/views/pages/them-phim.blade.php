@@ -7,7 +7,7 @@
         
         <div class="fb-w-40 d-in-bl f-left ">
 
-        <form action='them-phim' METHOD="POST"> 
+        <form action='them-phim' METHOD="POST" enctype="multipart/form-data"> 
         @csrf
                 <div class="form-group">
                     <label for="txtname">Tên phim</label>
