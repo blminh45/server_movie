@@ -1,6 +1,5 @@
 @extends('layouts.default')
 @section('noi-dung')
-
 <section class="wrapper">
     <!-- //market-->
     <div class="market-updates">
@@ -371,7 +370,7 @@
         </div>
         <div class="clearfix"> </div>
     </div>
-</section>
+</section> 
 <!-- footer -->
 @include('includes.footer')
 <!-- / footer -->
