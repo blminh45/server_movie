@@ -12,7 +12,6 @@ class ApiController extends Controller
     public function danh_sach_phim()
     {
         $phims = phim::all();
-
         return response()->json($phims, Response::HTTP_OK);
     }
 
@@ -31,14 +30,12 @@ class ApiController extends Controller
     public function sua_phim(Request $req, $id)
     {
         $phim = phim::where('id', $id)->update($req->all());
-
         return response()->json($phim, 200);
     }
 
     public function destroy($id, Request $req)
     {
         $phim = phim::where('id', $id)->update($req->all());
-
         return response()->json($phim, 200);
     }
 

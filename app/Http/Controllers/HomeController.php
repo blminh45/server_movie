@@ -35,66 +35,79 @@ class HomeController extends Controller
     {
         $dsphim=phim::all();
         return view('pages.danh-sach-phim')->with("dsphim",$dsphim);
-
     }
+
     public function danh_sach_theloai()
     {
         $the_loais=the_loai::all();
         return view('pages.danh-sach-theloai')->with("dstheloai",$the_loais);
     }
+
     public function danh_sach_suatchieu()
     {
         return view('pages.danh-sach-suatchieu');
     }
+
     public function them_suatchieu()
     {
         return view('pages.them-suatchieu');
     }
+
     public function them_phim()
     {
         return view('pages.them-phim');
     }
+
     public function them_rap()
     {
         return view('pages.them-rap');
     }
+
     public function them_chinhanh()
     {
         return view('pages.them-chinhanh');
     }
+
     public function them_theloai()
     {
         return view('pages.them-theloai');
     }
+
     public function them_khachhang()
     {
         return view('pages.them-thanhvien');
     }
+
     public function cap_nhat_phim($id)
     {
         $capnhatphim=phim::find($id);
         return view('pages.cap-nhat-phim')->with("capnhatphim",$capnhatphim);
     }
+
     public function cap_nhat_theloai($id)
     {
         $the_loais=the_loai::find($id);
         return view('pages.cap-nhat-theloai')->with("dstheloai",$the_loais);
     }
+
     public function cap_nhat_rap($id)
     {
         $raps=rap::find($id);
         return view('pages.cap-nhat-rap')->with("capnhatrap",$raps);
     }
+
     public function cap_nhat_thanhvien($id)
     {
         $khach_hangs=khach_hang::find($id);
         return view('pages.cap-nhat-thanhvien')->with("khach_hangs",$khach_hangs);
     }
+
     public function cap_nhat_chinhanh($id)
     {
         $chi_nhanhs=chi_nhanh::find($id);
         return view('pages.cap-nhat-chi-nhanh')->with("capnhatchinhanh",$chi_nhanhs);
     }
+
     public function danh_sach_rap() 
     {
         $dsrap=rap::all();
@@ -106,11 +119,13 @@ class HomeController extends Controller
         $dschi_nhanh=chi_nhanh::all();
         return view('pages.danh-sach-chinhanh')->with("dschinhanh",$dschi_nhanh);
     }
+
     public function danh_sach_thanh_vien()
     {
         $dskhachhang=khach_hang::all();
         return view('pages.danh-sach-thanh-vien')->with("dskhachhang",$dskhachhang);
     }
+
     public function ThemPhim(Request $request)
     {
         $url="g8.jpg";
@@ -134,6 +149,7 @@ class HomeController extends Controller
         $phims->save();
         return redirect()->action('HomeController@danh_sach_phim');
     }
+
     public function SuaPhim(Request $request, $id)
     {
         $phims = phim::find($id);
@@ -148,6 +164,7 @@ class HomeController extends Controller
         $phims->save();
         return redirect()->action('HomeController@danh_sach_phim');
     }
+
     public function ThemRap(Request $request)
     {
         $raps = new rap;
@@ -157,6 +174,7 @@ class HomeController extends Controller
         $raps->save();
         return redirect()->action('HomeController@danh_sach_rap');
     }
+
     public function SuaRap(Request $request, $id)
     {
         $raps = rap::find($id);
@@ -166,6 +184,7 @@ class HomeController extends Controller
         $raps->save();
         return redirect()->action('HomeController@danh_sach_rap');
     }
+
     public function ThemChiNhanh(Request $request)
     {
         $chi_nhanhs = new chi_nhanh;
@@ -175,6 +194,7 @@ class HomeController extends Controller
         $chi_nhanhs->save();
         return redirect()->action('HomeController@danh_sach_chinhanh');
     }
+
     public function SuaChiNhanh(Request $request,$id)
     {
         $chi_nhanhs = chi_nhanh::find($id);
@@ -184,20 +204,25 @@ class HomeController extends Controller
         $chi_nhanhs->save();
         return redirect()->action('HomeController@danh_sach_chinhanh');
     }
+
     public function ThemTheLoai(Request $request)
     {
         $the_loais = new the_loai;
         $the_loais->ten_the_loai = $request->tentheloai;
+
         $the_loais->save();
         return redirect()->action('HomeController@danh_sach_theloai');
     }
+
     public function SuaTheLoai(Request $request,$id)
     {
         $the_loais = the_loai::find($id);
         $the_loais->ten_the_loai = $request->tentheloai;
+
         $the_loais->save();
         return redirect()->action('HomeController@danh_sach_theloai');
     }
+
     public function ThemKhachHang(Request $request)
     {
         $khach_hangs = new khach_hang;
@@ -208,21 +233,24 @@ class HomeController extends Controller
         $khach_hangs->anh_dai_dien = $request->hinhdaidien; 
         $khach_hangs->email = $request->email; 
         $password = bcrypt('$request->matkhau');
-        $khach_hangs->mat_khau = $password; 
+        $khach_hangs->mat_khau = $password;
+
         $khach_hangs->save();
         return redirect()->action('HomeController@danh_sach_thanh_vien');
     }
+
     public function SuaKhachHang(Request $request,$id)
     {
         $khach_hangs = khach_hang::find($id);
         $khach_hangs->ten = $request->tenkhachhang;
         $khach_hangs->dia_chi = $request->diachiKH; 
-        $khach_hangs->so_dien_thoai = $request->sodienthoai; 
-        $khach_hangs->gioi_tinh = $request->gioitinh; 
-        $khach_hangs->anh_dai_dien = $request->hinhdaidien; 
-        $khach_hangs->email = $request->email; 
+        $khach_hangs->so_dien_thoai = $request->sodienthoai;
+        $khach_hangs->gioi_tinh = $request->gioitinh;
+        $khach_hangs->anh_dai_dien = $request->hinhdaidien;
+        $khach_hangs->email = $request->email;
         $password = bcrypt('$request->matkhau');
-        $khach_hangs->mat_khau = $password; 
+        $khach_hangs->mat_khau = $password;
+
         $khach_hangs->save();
         return redirect()->action('HomeController@danh_sach_thanh_vien');
     }
@@ -234,9 +262,11 @@ class HomeController extends Controller
         $suat_chieus->id_Phim = "1";
         $suat_chieus->Gio = $request->giochieu;
         $suat_chieus->Ngaychieu = $request->ngaychieu;
+
         $suat_chieus->save();
         return redirect()->action('HomeController@danh_sach_suatchieu');
     }
+
     public function SuaSuatChieu(Request $request)
     {
         $phims = phim::find($id);
@@ -245,32 +275,28 @@ class HomeController extends Controller
         $phims->Gio = $request->giochieu;
         $newday=date("Y-m-d",strtotime($request->ngaychieu));
         $phims->Ngaychieu = $newday;
+
         $phims->save();
         return redirect()->action('HomeController@//dsSuatChieu');
     }
 
-
-
-
-
-
-
-
 // chưa làm <!-- thêm vào action /{{ $news->id }} và thêm thẻ <input type="hidden" name="id" value="{{ $news->id }}"> -->
-
     public function ThemVe(Request $request)
     {
         $phims = new phim;
         $phims->id_SuatChieu = $request->suatchieu;
         $phims->id_KH = $request->khachhang;
+
         $phims->save();
         return redirect()->action('HomeController@them_phim');
     }
+
     public function SuaVe(Request $request)
     {
         $phims = phim::find($id);
         $phims->id_SuatChieu = $request->suatchieu;
         $phims->id_KH = $request->khachhang;
+
         $phims->save();
         return redirect()->action('HomeController@//dsVe');
     }

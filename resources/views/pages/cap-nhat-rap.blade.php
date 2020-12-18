@@ -9,7 +9,7 @@
             @csrf
                 <div class="form-group">
                     <label for="txtname">Số ghế</label>
-                    <input type="text" class="form-control" id="txtname" name="soluongghe" value={{$capnhatrap->so_luong_ghe}}>
+                    <input type="text" class="form-control" id="txtname" name="soluongghe" value="{{$capnhatrap->so_luong_ghe}}">
                     <small id="namemovie" class="form-text text-danger"> Vui lòng nhập tên chi nhánh!</small>
                   </div>        
         </div>
@@ -17,7 +17,7 @@
            
                 <div class="form-group">
                     <label for="txtthoiluong">Chi nhánh</label>
-                    <input type="text" class="form-control" id="txtname" name="chinhanh"  value={{$capnhatrap->id_chi_nhanh}}>
+                    <input type="text" class="form-control" id="txtname" name="chinhanh"  value="{{$capnhatrap->id_chi_nhanh}}">
                     <small id="thoiluong" class="form-text text-danger"> Vui lòng nhập địa chỉ!</small>
                   </div>
 
