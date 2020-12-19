@@ -5,7 +5,7 @@
     <div class="container">
         <h2 class="title-h2 text-center add-movie">THÊM THÀNH VIÊN</h2>
         <div class="fb-w-40 d-in-bl f-left ">
-            <form action='them-thanhvien' METHOD="POST">
+            <form action='them-thanhvien' METHOD="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="txtkh">Tên khách hàng</label>
