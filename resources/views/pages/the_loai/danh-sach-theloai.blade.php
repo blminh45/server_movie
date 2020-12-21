@@ -14,6 +14,8 @@
             <tr>
                 <th scope="col">STT</th>
                 <th scope="col">Tên thể loại</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
         </thead>
 

@@ -33,7 +33,7 @@
                 <td>{{$item->email}}</td>
                 <td>{{$item->gioi_tinh}}</td>
                 <td>
-                    <a type="submit" href="/thanh-vien/cap-nhat-thanhvien/{{$item->id}}"
+                    <a type="submit" href="pages/thanh-vien/cap-nhat-thanhvien/{{$item->id}}"
                         class="btn btn-warning">Update</a>
                 </td>
                 <td>

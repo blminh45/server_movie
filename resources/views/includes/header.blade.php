@@ -210,18 +210,16 @@
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <img alt="" src="{{ asset('images/2.png') }}">
-                    <span class="username">John Doe</span>
+                    <span class="username">Cinema</span>
                     <b class="caret"></b>
                 </a>
 
                 <ul class="dropdown-menu extended logout">
                     <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                    <li><a href="login"><i class="fa fa-key"></i> Log Out</a></li>
+                    <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                 </ul>
             </li>
             <!-- user login dropdown end -->
-
         </ul>
         <!--search & user info end-->
     </div>

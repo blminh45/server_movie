@@ -31,11 +31,11 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->ten_phim}}</td>
                 <td> <img width="100px" height="100px" src="/images/{{$item->hinh_anh}}"></td>
-                <td>{{$item->id_the_loai}}</td>
+                <td>{{$item->the_loai->ten_the_loai}}</td>
                 <td>{{$item->thoi_luong}}</td>
                 <td>{{$item->khoi_chieu}}</td>
                 <td>{{$item->tom_tat}}</td>
-                <td><a type="submit" href="/phim/cap-nhat-phim/{{$item->id}}" class="btn btn-warning">Update</a></td>
+                <td><a type="submit" href="/pages/phim/cap-nhat-phim/{{$item->id}}" class="btn btn-warning">Update</a></td>
                 <td>
                     <button class="btn btn-secondary" style="background-color: #606060; color: #fff;">Delete</button>
                 </td>
