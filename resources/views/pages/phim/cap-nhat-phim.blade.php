@@ -10,7 +10,7 @@
             <div class="form-group">
                 <label for="txtname">Tên phim</label>
                 <input type="text" class="form-control" id="txtname" name="tenphim"
-                value="{{$capnhatphim->ten_phim}}">
+                value="{{$capnhatphim->ten_phim}} "  oninput="checkAddMovie()">
                 <small id="namemovie" class="form-text text-danger"> Vui lòng nhập tên phim!</small>
             </div>
 
@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label for="noidung">Tóm tắt nội dung</label>
                 <textarea class="form-control" id="noidung" rows="8"
-                name="tom_tat">{{$capnhatphim->tom_tat}}</textarea>
+                name="tom_tat" oninput="checkAddMovie()">{{$capnhatphim->tom_tat}}</textarea>
                 <small id="noidung" class="form-text text-danger"> Vui lòng nhập nội dung phim!</small>
             </div>
 
@@ -44,7 +44,7 @@
             <div class="form-group">
                 <label for="txtthoiluong">Thời lượng</label>
                 <input type="text" class="form-control" id="txtname" name="thoiluong"
-                value="{{$capnhatphim->thoi_luong}}">
+                value="{{$capnhatphim->thoi_luong}}" oninput="checkAddMovie()">
                 <small id="thoiluong" class="form-text text-danger"> Vui lòng nhập thời lượng!</small>
             </div>
 
@@ -61,13 +61,13 @@
             <div class="form-group">
                 <label for="txtkhoichieu">Khởi chiếu</label>
                 <input type="date" class="form-control" id="txtkhoichieu" name="ngaykhoicchieu"
-                value="{{$capnhatphim->khoi_chieu}}">
+                value="{{$capnhatphim->khoi_chieu}}" oninput="checkAddMovie()">
                 <small id="khoichieu" class="form-text text-danger">Ngày không hợp lệ!</small>
             </div>
 
             <div class="form-group">
                 <label for="txttrailer">Trailer</label>
-                <input type="text" class="form-control" id="txttrailer">
+                <input type="text" class="form-control" id="txttrailer" oninput="checkAddMovie()">
                 <small id="trailer" class="form-text text-danger">Vui lòng thêm trailer!</small>
             </div>
             <button type="submit">Gửi</button>

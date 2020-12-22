@@ -189,6 +189,7 @@
     <!-- //calendar -->
 
     @yield('script')
+    <script type="text/javascript" src="{{ asset('js/style.js') }}"></script>
 </body>
 
 </html>

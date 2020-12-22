@@ -27,12 +27,14 @@
 
             <div class="form-group">
                 <label for="giochieu">Giờ chiếu</label>
-                <input type="time" class="form-control" id="giochieu" name="giochieu">
+                <input type="time" class="form-control" id="txtgiochieu" name="giochieu" oninput="checkSuatChieu()">
+                <small id="errgiochieu" class="form-text text-danger"> Giờ chiếu không hợp lệ!</small>
             </div>
 
             <div class="form-group">
                 <label for="ngaychieu">Ngày chiếu</label>
-                <input type="date" class="form-control" id="ngaychieu" name="ngaychieu">
+                <input type="date" class="form-control" id="txtngaychieu" name="ngaychieu" oninput="checkSuatChieu()">
+                <small id="errngaychieu" class="form-text text-danger"> Ngày chiếu không hợp lệ!</small>
             </div>
 
             <button type="sumbit">Gửi</button>

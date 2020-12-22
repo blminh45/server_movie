@@ -6,9 +6,9 @@
     <form action='them-theloai' METHOD="POST">
         @csrf
         <div class="form-group">
-            <label for="txttheloai">Tên thể loại</label>
-            <input type="text" class="form-control" id="txttheloai" name="tentheloai">
-            <small id="theloai" class="form-text text-danger"> Vui lòng không bỏ trống!</small>
+            <label for="txttentheloai">Tên thể loại</label>
+            <input type="text" class="form-control" id="txttheloai" name="tentheloai" oninput="checkTheLoai()">
+            <small id="errtentheloai" class="form-text text-danger"> Vui lòng không bỏ trống!</small>
         </div>
         <button type="sumbit" class="btn btn-info">Thêm</button>
     </form>

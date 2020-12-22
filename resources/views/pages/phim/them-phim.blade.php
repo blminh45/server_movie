@@ -11,8 +11,8 @@
         <div class="fb-w-40 d-in-bl f-left ">
             <div class="form-group">
                 <label for="txtname">Tên phim</label>
-                <input type="text" class="form-control" id="txtname" placeholder="Nhập tên phim" name="tenphim">
-                <small id="namemovie" class="form-text text-danger"> Vui lòng nhập tên phim!</small>
+                <input type="text" class="form-control" id="txtname" placeholder="Nhập tên phim" name="tenphim"  oninput="checkAddMovie()">
+                <small id="errname" class="form-text text-danger"> Vui lòng nhập tên phim!</small>
             </div>
 
             <div class="form-group">
@@ -26,8 +26,8 @@
 
             <div class="form-group">
                 <label for="noidung">Tóm tắt nội dung</label>
-                <textarea class="form-control" id="noidung" rows="8" name="tomtat"></textarea>
-                <small id="noidung" class="form-text text-danger"> Vui lòng nhập nội dung phim!</small>
+                <textarea class="form-control" id="txtnoidung" rows="8" name="tomtat"  oninput="checkAddMovie()"></textarea>
+                <small id="errnoidung" class="form-text text-danger"> Vui lòng nhập nội dung phim!</small>
             </div>
 
             <div class="form-group">
@@ -40,8 +40,8 @@
         <div class="fb-w-40 d-in-bl f-right">
             <div class="form-group">
                 <label for="txtthoiluong">Thời lượng</label>
-                <input type="text" class="form-control" id="txtname" placeholder="Thời lượng" name="thoiluong">
-                <small id="thoiluong" class="form-text text-danger"> Vui lòng nhập thời lượng!</small>
+                <input type="text" class="form-control" id="txtthoiluong" placeholder="Thời lượng" name="thoiluong"  oninput="checkAddMovie()">
+                <small id="errthoiluong" class="form-text text-danger"> Vui lòng nhập thời lượng!</small>
             </div>
 
             <div class="form-group">
@@ -57,14 +57,14 @@
             <div class="form-group">
                 <label for="txtkhoichieu">Khởi chiếu</label>
                 <input type="date" class="form-control" id="txtkhoichieu" placeholder="Thời lượng"
-                name="ngaykhoichieu">
-                <small id="khoichieu" class="form-text text-danger">Ngày không hợp lệ!</small>
+                name="ngaykhoichieu"  oninput="checkAddMovie()">
+                <small id="errkhoichieu" class="form-text text-danger">Ngày không hợp lệ!</small>
             </div>
 
             <div class="form-group">
                 <label for="txttrailer">Trailer</label>
-                <input type="text" class="form-control" id="txttrailer" placeholder="Thời lượng">
-                <small id="trailer" class="form-text text-danger">Vui lòng thêm trailer!</small>
+                <input type="text" class="form-control" id="txttrailer" placeholder="Thời lượng"  oninput="checkAddMovie()">
+                <small id="errtrailer" class="form-text text-danger">Vui lòng thêm trailer!</small>
             </div>
             <button type="sumbit">Gửi</button>
         </div>

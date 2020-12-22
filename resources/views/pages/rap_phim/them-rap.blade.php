@@ -8,8 +8,8 @@
             @csrf
             <div class="form-group">
                 <label for="txtsoluong">Số lượng ghế</label>
-                <input type="number" class="form-control" id="txtsoluong" name="soluongghe">
-                <small id="soluongghe" class="form-text text-danger"> Số lượng không hợp lệ!</small>
+                <input type="number" class="form-control" id="txtsoluong" name="soluongghe" oninput="checkRap()">
+                <small id="errslghe" class="form-text text-danger"> Số lượng không hợp lệ!</small>
             </div>
 
             <div class="form-group">
