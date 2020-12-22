@@ -16,7 +16,7 @@
                 <th scope="col">Số ghế</th>
                 <th scope="col">Chi nhánh</th>
                 <th scope="col">Update</th>
-                <th scope="col">Action</th>
+                <th scope="col">Active</th>
             </tr>
         </thead>
 
@@ -26,7 +26,7 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->so_luong_ghe}}</td>
                 <td>{{ $item->chi_nhanh->ten_chi_nhanh }}</td>
-                <td><a type="submit" href="pages/rap-phim/cap-nhat-rap/{{$item->id}}" class="btn btn-warning">Update</a></td>
+                <td><a type="submit" href="cap-nhat-rap/{{$item->id}}" class="btn btn-warning">Update</a></td>
                 <td>
                     <label class="switch">
                         @if($item->trang_thai == 1)
@@ -41,10 +41,6 @@
       </tbody>
   </table>
 </section>
-
-<!-- footer -->
-@include('includes.footer')
-<!-- / footer -->
 
 @endsection
 

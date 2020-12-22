@@ -16,13 +16,11 @@
 
             <div class="form-group">
                 <label for="select-theloai">Thể loại</label>
-                <select class="form-control" id="select-theloai" name="id_the_loai" value="{{$capnhatphim->id_the_loai}}">
-                    <option>Hành động</option>
-                    <option>Hài</option>
-                    <option>Tình cảm</option>
-                    <option>Tâm lí</option>
-                    <option>Viễn tưởng</option>
-                </select>
+                    <select class="form-control" id="select-theloai" name="theloai" value="{{$capnhatphim->id_the_loai}}">
+                        @foreach($the_loais as $item)
+                        <option value="{{ $item->id }}">{{ $item->ten_the_loai }}</option>
+                        @endforeach
+                    </select>
             </div>
 
             <div class="form-group">

@@ -12,4 +12,8 @@ class rap extends Model
     public function chi_nhanh() {
         return $this->belongsTo('App\chi_nhanh', 'id_chi_nhanh', 'id');
     }
+
+    public function ghe() {
+        return $this->belongsToMany('App\ghe', 'danh_sach_ghe', 'id_rap', 'id_ghe');
+    }
 }

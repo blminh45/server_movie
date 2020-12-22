@@ -27,13 +27,13 @@
             @foreach($dskhachhang as $item)
             <tr>
                 <td>{{$item->ten}}</td>
-                <td> <img style="width:100px; height:100px;" src="/images/{{$item->anh_dai_dien}}"></td>
+                <td> <img width="100%" src="/images/{{$item->anh_dai_dien}}"></td>
                 <td>{{$item->dia_chi}}</td>
                 <td>{{$item->so_dien_thoai}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->gioi_tinh}}</td>
                 <td>
-                    <a type="submit" href="pages/thanh-vien/cap-nhat-thanhvien/{{$item->id}}"
+                    <a type="submit" href="cap-nhat-thanhvien/{{$item->id}}"
                         class="btn btn-warning">Update</a>
                 </td>
                 <td>
@@ -44,9 +44,5 @@
         </tbody>
     </table>
 </section>
-
-<!-- footer -->
-@include('includes.footer')
-<!-- / footer -->
 
 @endsection

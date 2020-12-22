@@ -43,8 +43,9 @@ class HomeController extends Controller
 
     public function cap_nhat_phim($id, Request $req)
     {
+        $the_loais = the_loai::all();
         $capnhatphim = phim::find($id);
-        return view('pages.phim.cap-nhat-phim')->with("capnhatphim", $capnhatphim);
+        return view('pages.phim.cap-nhat-phim', ["the_loais"=>$the_loais, "capnhatphim"=>$capnhatphim]);
     }
 
 //the loai
@@ -79,8 +80,9 @@ class HomeController extends Controller
 //rap
     public function danh_sach_rap()
     {
-        $dsrap = rap::all();
-        return view('pages.rap_phim.danh-sach-rap')->with("dsrap", $dsrap);
+        $c_nhanh = chi_nhanh::all();
+        $dsrap = rap::where('id_chi_nhanh', $c_nhanh->id=2)->get();
+        return view('pages.rap_phim.danh-sach-rap', ["dsrap"=>$dsrap]);//->with("dsrap", $dsrap);
     }
 
     public function them_rap()
@@ -167,7 +169,7 @@ class HomeController extends Controller
         $phims = phim::find($id);
         $phims->ten_phim = $request->tenphim;
         $phims->hinh_anh = $img_name;
-        $phims->id_the_loai = "1";
+        $phims->id_the_loai = $request->theloai;
         $phims->thoi_luong = $request->thoiluong;
         $newday = date("Y-m-d", strtotime($request->ngaykhoicchieu));
         $phims->khoi_chieu = $newday;

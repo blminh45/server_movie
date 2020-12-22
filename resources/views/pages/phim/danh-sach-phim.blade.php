@@ -13,10 +13,9 @@
         <thead class="thead-dark table-all-dark">
             <tr>
                 <th>STT</th>
-                <th>Hình ảnh</th>
                 <th>Tên phim</th>
+                <th>Hình ảnh</th>
                 <th>Thể loại</th>
-                <th>Độ tuổi</th>
                 <th>Thời lượng</th>
                 <th>Công chiếu</th>
                 <th>Update</th>
@@ -30,12 +29,11 @@
             <tr>
                 <td>{{$item->id}}</td>
                 <td>{{$item->ten_phim}}</td>
-                <td> <img width="100px" height="100px" src="/images/{{$item->hinh_anh}}"></td>
+                <td> <img width="100%" src="/images/{{$item->hinh_anh}}"></td>
                 <td>{{$item->the_loai->ten_the_loai}}</td>
                 <td>{{$item->thoi_luong}}</td>
                 <td>{{$item->khoi_chieu}}</td>
-                <td>{{$item->tom_tat}}</td>
-                <td><a type="submit" href="/pages/phim/cap-nhat-phim/{{$item->id}}" class="btn btn-warning">Update</a></td>
+                <td><a type="submit" href="cap-nhat-phim/{{$item->id}}" class="btn btn-warning">Update</a></td>
                 <td>
                     <button class="btn btn-secondary" style="background-color: #606060; color: #fff;">Delete</button>
                 </td>
