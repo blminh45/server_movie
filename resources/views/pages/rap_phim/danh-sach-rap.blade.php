@@ -13,6 +13,7 @@
         <thead class="thead-dark table-all-dark">
             <tr>
                 <th scope="col">STT</th>
+                <th scope="col">Rạp</th>
                 <th scope="col">Số ghế</th>
                 <th scope="col">Chi nhánh</th>
                 <th scope="col">Update</th>
@@ -24,6 +25,7 @@
             @foreach($dsrap as $item) 
             <tr>
                 <td>{{$item->id}}</td>
+                <td>{{ $item->ten_rap }}</td>
                 <td>{{$item->so_luong_ghe}}</td>
                 <td>{{ $item->chi_nhanh->ten_chi_nhanh }}</td>
                 <td><a type="submit" href="cap-nhat-rap/{{$item->id}}" class="btn btn-warning">Update</a></td>

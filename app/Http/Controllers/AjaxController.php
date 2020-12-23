@@ -10,7 +10,7 @@ use App\the_loai;
 use App\khach_hang;
 use App\suat_chieu;
 
-class HomeController extends Controller
+class AjaxController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -32,7 +32,9 @@ class HomeController extends Controller
     public function danh_sach_phim()
     {
         $dsphim = phim::all();
-        return view('pages.phim.danh-sach-phim')->with("dsphim", $dsphim);
+        echo "
+        <p>".$dsphim."</p>
+        ";
     }
 
     public function them_phim(Request $req)
@@ -81,7 +83,7 @@ class HomeController extends Controller
     public function danh_sach_rap()
     {
         $c_nhanh = chi_nhanh::all();
-        $dsrap = rap::all();//where('id_chi_nhanh', $c_nhanh->id=2)->get();
+        $dsrap = rap::where('id_chi_nhanh', $c_nhanh->id=2)->get();
         return view('pages.rap_phim.danh-sach-rap', ["dsrap"=>$dsrap]);//->with("dsrap", $dsrap);
     }
 
@@ -182,7 +184,6 @@ class HomeController extends Controller
     public function ThemRap(Request $request)
     {
         $raps = new rap;
-        $raps->ten_rap = 'rạp '.(count(rap::where('id_chi_nhanh', $request->chi_nhanh)->get())+1);
         $raps->so_luong_ghe = $request->soluongghe;
         $raps->id_chi_nhanh = $request->chi_nhanh;
         $raps->trang_thai = $request->trang_thai;

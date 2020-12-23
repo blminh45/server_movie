@@ -44,8 +44,4 @@
     </table>
 </section>
 
-<!-- footer -->
-{{-- @include('includes.footer') --}}
-<!-- / footer -->
-
 @endsection
