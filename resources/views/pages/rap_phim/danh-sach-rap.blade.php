@@ -32,27 +32,27 @@
                 <td>
                     <label class="switch">
                         @if($item->trang_thai == 1)
-                        <input type="checkbox" checked>
+                        <input type="checkbox" checked value="{{ $item->trang_thai }}">
                         @else <input type="checkbox">
                         @endif
                         <span class="slider round"></span>
                     </label>
-              </td>
-          </tr>
-          @endforeach
-      </tbody>
-  </table>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </section>
 
 @endsection
 
 @section('script')
 <script>
-  $(function() {
-    $('#toggle-two').bootstrapToggle({
-      on: 'Enabled',
-      off: 'Disabled'
-  });
+  // $(function() {
+  //   $('#toggle-two').bootstrapToggle({
+  //     on: 'Enabled',
+  //     off: 'Disabled'
+  // });
 });
 </script>
 @endsection

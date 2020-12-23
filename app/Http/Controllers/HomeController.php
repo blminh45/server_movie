@@ -32,7 +32,8 @@ class HomeController extends Controller
     public function danh_sach_phim()
     {
         $dsphim = phim::all();
-        return view('pages.phim.danh-sach-phim')->with("dsphim", $dsphim);
+        $the_loais = the_loai::all();
+        return view('pages.phim.danh-sach-phim', ['dsphim'=>$dsphim, 'the_loais'=>$the_loais]);//->with("dsphim", $dsphim);
     }
 
     public function them_phim(Request $req)
@@ -81,7 +82,8 @@ class HomeController extends Controller
     public function danh_sach_rap()
     {
         $c_nhanh = chi_nhanh::all();
-        $dsrap = rap::all();//where('id_chi_nhanh', $c_nhanh->id=2)->get();
+        $dsrap = rap::all();
+
         return view('pages.rap_phim.danh-sach-rap', ["dsrap"=>$dsrap]);//->with("dsrap", $dsrap);
     }
 
