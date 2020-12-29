@@ -54,11 +54,11 @@
         <!--main content end-->
     </section>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/jquery.dcjqaccordion.2.7.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/jquery.nicescroll.js') }}"></script>
     <script src="{{ asset('js/jquery.scrollTo.js') }}"></script>
+    <script src="{{ asset('js/jquery.dcjqaccordion.2.7.js') }}"></script>
     <!-- morris JavaScript -->
     <script>
     $(document).ready(function() {
@@ -188,8 +188,8 @@
     </script>
     <!-- //calendar -->
 
-    @yield('script')
     <script type="text/javascript" src="{{ asset('js/style.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>

@@ -33,7 +33,12 @@ class HomeController extends Controller
     {
         $dsphim = phim::all();
         $the_loais = the_loai::all();
-        return view('pages.phim.danh-sach-phim', ['dsphim'=>$dsphim, 'the_loais'=>$the_loais]);//->with("dsphim", $dsphim);
+        // $capnhatphim = phim::find($id);
+        return view('pages.phim.danh-sach-phim', 
+            [
+                'dsphim' => $dsphim,
+                'the_loais' => $the_loais
+            ]);//->with("dsphim", $dsphim);
     }
 
     public function them_phim(Request $req)

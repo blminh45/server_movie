@@ -30,3 +30,10 @@ Route::get('/danh-sach-the-loai', 'ApiController@danh_sach_the_loai')->name('dan
 Route::group(['prefix'=>'rap-phim'], function (){
     Route::get('danh-sach-rap', 'ApiController@danh-sach-rap')->name('danh-sach-rap');
 });
+
+Route::group(['prefix'=>'ajax'], function() {
+    Route::get('danh-sach-phim', 'AjaxController@danh_sach_phim')->name('danh-sach-phim');
+    Route::post('them-phim', 'AjaxController@ThemPhim')->name('them-phim');
+    Route::post('cap-nhat-phim', 'AjaxController@CapNhatPhim')->name('cap-nhat-phim');
+    Route::get('phim', 'AjaxController@getPhim')->name('phim');
+});
