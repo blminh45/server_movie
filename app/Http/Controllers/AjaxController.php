@@ -20,11 +20,11 @@ class AjaxController extends Controller
         foreach ($dsphim as $item) {
             echo "
             <tr>
-            <td>".$item->id."</td>
+            <td class='idPhim'>".$item->id."</td>
             <td>".$item->ten_phim."</td>
             <td> <img width='100%' src='/images/".$item->hinh_anh."'></td>
             <td>".$item->the_loai->ten_the_loai."</td>
-            <td><a type='submit' href='#mediumModal' class='btn btn-warning getPhim' data-toggle='modal' data-target='#mediumModal'>Update</a></td>
+            <td><a type='submit' href='#mediumModal' class='btn btn-warning' id='getPhim' data-toggle='modal' data-target='#mediumModal'>Update</a></td>
                 <td>
                     <button type='button' class='btn btn-secondary' style='background-color: #606060; color: #fff;''>Delete</button>
                 </td>
@@ -35,20 +35,21 @@ class AjaxController extends Controller
     }
 
     public function getPhim(Request $req){
-        $phim = phim::find($req->phim["id"]);
+        $phim = phim::find($req->id);
         
         return json_encode($phim);
     }
 
     public function ThemPhim(Request $request)
     {
+        $req = $request->phim;
         $phims = new phim;
-        $phims->ten_phim = $request->phim[0];
-        $phims->id_the_loai = $request->phim[1];
-        $phims->thoi_luong = $request->phim[2];
-        $phims->trailer = $request->phim[3];
-        $phims->tom_tat = $request->phim[4];
-        $phims->hinh_anh = $request->phim[5];
+        $phims->ten_phim = $req["tenphim"];
+        $phims->id_the_loai = $req["theloai"];
+        $phims->thoi_luong = $req["thoiluong"];
+        $phims->trailer = $req["trailer"];
+        $phims->tom_tat = $req["tomtat"];
+        $phims->hinh_anh = $req["poster"];
 
         $phims->save();
         return redirect()->action('AjaxController@danh_sach_phim');

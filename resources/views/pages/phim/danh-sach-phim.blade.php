@@ -9,7 +9,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Them phim</h4>
+                    <h4 id="titleModal" class="modal-title"></h4>
                 </div>
                 <div id="modalViewBody" class="modal-body">
                     <form id="formI" action="" method="post" name="formInput" enctype="multipart/form-data">
@@ -63,8 +63,8 @@
         </div>
     </div>
 
-    <h2 class="text-center title-h2">DANH SÁCH PHIM</h2>
 
+    <h2 class="text-center title-h2">DANH SÁCH PHIM</h2>
     <button class="btn btn-success" id="btnThem" type="submit" data-toggle="modal" data-target="#mediumModal">Them phim</button>
 
     <table class="table table-all">
@@ -85,13 +85,13 @@
             @foreach($dsphim as $item)
             <tr>
                 <td class="idPhim">{{$item->id}}</td>
-                <td class="tenPhim">{{$item->ten_phim}}</td>
-                <td> <img width="100%" src="/images/{{$item->hinh_anh}}"></td>
+                <td>{{$item->ten_phim}}</td>
+                <td><img width="100%" src="/images/{{$item->hinh_anh}}"></td>
                 <td>{{$item->the_loai->ten_the_loai}}</td>
                 <td>{{$item->thoi_luong}}</td>
-                <td><a type="submit" href="#mediumModal" class="btn btn-warning getPhim" data-toggle="modal" data-target="#mediumModal">Update</a></td>
+                <td><a type="submit" href="#mediumModal" class="btn btn-warning" id="getPhim" data-toggle="modal" data-target="#mediumModal">Cập nhật</a></td>
                 <td>
-                    <button type="button" class="btn btn-secondary" style="background-color: #606060; color: #fff;">Delete</button>
+                    <button type="button" class="btn btn-secondary" style="background-color: #606060; color: #fff;">Xóa</button>
                 </td>
                 <td><button class="btn btn-info">Lịch chiếu</button></td>
             </tr>
@@ -103,8 +103,8 @@
 @endsection
 
 @section('script')
-<script type="text/javascript">
-    // document.getElementById('btnModal').onclick = themPhim;
+<script src="{{ asset('js/danh_sach_phim_ajax.js') }}"></script>
+{{-- <script type="text/javascript" defer="">
     document.getElementById('btnThem').onclick = function(){
         document.getElementById("formI").reset();
         var el = document.getElementById('btnModal');
@@ -112,133 +112,6 @@
         el.onclick = themPhim;
     }
 
-    function getPhimForm(data){
-        var e = document.getElementById('select-theloai').value;
-        var arr = data.elements.namedItem("poster").value.split("\\");
-        var len = arr.length;
-        console.log(arr[len-1]);
-        var phim = {
-            "tenphim": data.elements.namedItem("tenphim").value,
-            "theloai": e,
-            "thoiluong": data.elements.namedItem("thoiluong").value,
-            "trailer": data.elements.namedItem("trailer").value,
-            "tomtat": data.elements.namedItem("tomtat").value,
-            "poster": arr[len-1]
-        };
-        return phim;
-    }
-
-    function themPhim(){
-        $("#mediumModal").modal("hide");
-
-        var data = document.getElementById('formI');
-        var phim = getPhimForm(data);
-        console.log("truoc ajax: "+phim);
-        $.ajax({
-            type: 'POST',
-            cache: false,
-            url: '/api/ajax/them-phim',
-            data: {
-                "_token": '{{ csrf_token() }}',
-                "phim": [
-                    phim.tenphim,
-                    phim.theloai,
-                    phim.thoiluong,
-                    phim.trailer,
-                    phim.tomtat,
-                    phim.poster
-                ]
-            },
-            success: function(data){
-                $(".modal-backdrop").remove();
-                console.log("success: "+ data);
-                var result = data;
-                document.getElementById('bodyTablePhim').innerHTML = result;
-            },
-            error: function(data){
-                $(".modal-backdrop").remove();
-                document.getElementById('bodyTablePhim').innerHTML = data;
-                console.log('fail: '+data);
-            }
-        });
-
-        console.log("sau ajax: "+phim);
-    };
-
-    var idPhim;
-
-    $(".getPhim").click(function() {
-        $("#mediumModal").modal("hide");
-        var row = $(this).closest("tr");
-        var phim = {
-            "id": row.find(".idPhim").text(),
-            "tenphim": row.find(".tenPhim").text()
-        };
-        idPhim = phim.id;
-        console.log("truoc ajax: "+JSON.stringify(phim));
-
-        $.ajax({
-            type: 'GET',
-            cache: false,
-            url: '/api/ajax/phim',
-            dataType: 'text',
-            async: true,
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "phim": phim
-            },
-            success: function(data){
-                $(".modal-backdrop").remove();
-                var result = JSON.parse(data);
-
-                document.getElementById('txtname').value = result.ten_phim;
-                document.getElementById('select-theloai').value = result.id_the_loai;
-                document.getElementById('txtthoiluong').value = result.thoi_luong;
-                document.getElementById('txttrailer').value = result.trailer;
-                document.getElementById('txttomtat').value = result.tom_tat;
-                document.getElementById('hinh_anh').src = "/images/"+result.hinh_anh;
-                var el = document.getElementById('btnModal');
-                el.innerHTML = "Cap nhat phim";
-                el.onclick = capNhatPhim;
-
-                console.log("success: "+ result.ten_phim);
-            },
-            error: function(data){
-                $(".modal-backdrop").remove();
-                document.getElementById('bodyTablePhim').innerHTML = data;
-                console.log('fail: '+data);
-            }
-        });
-
-        console.log(phim);
-    });
-
-    function capNhatPhim(){
-        $("#mediumModal").modal("hide");
-        var data = document.getElementById('formI');
-        var phim = getPhimForm(data);
-        $.ajax({
-            type: 'POST',
-            cache: false,
-            url: '/api/ajax/cap-nhat-phim',
-            dataType: 'text',
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "id": idPhim,
-                "phim": phim
-            },
-            success: function(data){
-                $(".modal-backdrop").remove();
-                document.getElementById('bodyTablePhim').innerHTML = data;
-            },
-            error: function(data){
-                $(".modal-backdrop").remove();
-                document.getElementById('bodyTablePhim').innerHTML = data;
-                console.log('fail: '+data);
-            }
-        });
-        
-        console.log(phim);
-    }
-</script>
+    document.getElementById('getPhim').onclick = layThongTinRowClick;
+</script> --}}
 @endsection
