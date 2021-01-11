@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGhesTable extends Migration
+class CreateRapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateGhesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ghes', function (Blueprint $table) {
+        Schema::create('raps', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('hang',1);
-            $table->tinyInteger('cot');
+            $table->char('ten_rap',1);
+            $table->tinyInteger('so_luong_ghe');
+            $table->integer('id_chi_nhanh')->unsigned();
             $table->boolean('trang_thai')->default(1);
             $table->timestamps();
+
+            $table->foreign('id_chi_nhanh')->references('id')->on('chi_nhanhs');
         });
     }
 
@@ -29,6 +32,6 @@ class CreateGhesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ghes');
+        Schema::dropIfExists('raps');
     }
 }

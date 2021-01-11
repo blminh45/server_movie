@@ -28,9 +28,6 @@ class CreatePhimsTable extends Migration
             $table->string('trailer')->nullable();
             $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
-
-            //foreign key
-            $table->foreign('id_the_loai')->references('id')->on('the_loais');
         });
     }
 

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class danh_sach_chon_ghe extends Model
+class DanhSachGheChon extends Model
 {
-    protected $table='danh_sach_chon_ghes';
+    protected $table='danh_sach_ghe_chons';
     protected $fillable = ['id_ghe','id_rap','id_lich_chieu','trang_thai'];
 
     public function LichChieu()

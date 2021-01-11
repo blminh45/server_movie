@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTheLoaisTable extends Migration
+class CreateGhesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTheLoaisTable extends Migration
      */
     public function up()
     {
-        Schema::create('the_loais', function (Blueprint $table) {
+        Schema::create('ghes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ten_the_loai');
-            $table->boolean('trang_thai')->default('1');
-            $table->timestamps(0);
+            $table->char('hang',1);
+            $table->tinyInteger('cot');
+            $table->boolean('trang_thai')->default(1);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateTheLoaisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('the_loais');
+        Schema::dropIfExists('ghes');
     }
 }
