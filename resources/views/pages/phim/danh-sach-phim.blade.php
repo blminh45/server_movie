@@ -129,6 +129,8 @@
     }
 
     function themPhim(){
+
+
         $("#mediumModal").modal("hide");
 
         var data = document.getElementById('formI');
@@ -204,9 +206,7 @@
                 console.log("success: "+ result.ten_phim);
             },
             error: function(data){
-                $(".modal-backdrop").remove();
-                document.getElementById('bodyTablePhim').innerHTML = data;
-                console.log('fail: '+data);
+                $('#errname').text(data.responseJSON.errors.ten_phim);
             }
         });
 
