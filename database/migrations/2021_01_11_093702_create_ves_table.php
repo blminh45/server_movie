@@ -18,7 +18,7 @@ class CreateVesTable extends Migration
             $table->integer('id_lich_chieu')->unsigned();
             $table->integer('id_khach_hang')->unsigned();
             $table->integer('id_ghe')->unsigned();
-            $table->unsignedDecimal('gia',6,2)->default(80);
+            $table->unsignedDecimal('gia_ve',6,2)->default(80);
             $date=getdate();
             $table->date('ngay_mua')->default($date['year'].'-'.$date['mon'].'-'.$date['mday']);
             $table->boolean('trang_thai')->default(1);

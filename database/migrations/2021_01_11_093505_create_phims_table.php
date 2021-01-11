@@ -18,7 +18,7 @@ class CreatePhimsTable extends Migration
             $table->string('ten_phim');
             $table->integer('id_the_loai')->unsigned();
             $table->float('thoi_luong');
-
+            $table->unsignedDecimal('gia_phim',6,2)->default(50);
             $date=getdate();
             $table->date('khoi_chieu')->default($date['year'].'-'.$date['mon'].'-'.$date['mday']);
             $table->string('hinh_anh')->nullable();
