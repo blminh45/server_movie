@@ -14,7 +14,7 @@ class CreateTheLoaisTable extends Migration
     public function up()
     {
         Schema::create('the_loais', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->increments('id');
             $table->string('ten_the_loai');
             $table->boolean('trang_thai')->default('1');
             $table->timestamps(0);

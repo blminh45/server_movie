@@ -18,6 +18,7 @@ class CreateKhachHangsTable extends Migration
             $table->string('ten');
             $table->string('dia_chi');
             $table->string('so_dien_thoai');
+            $table->date('ngay_sinh');
             $table->string('email')->unique();
             $table->string('gioi_tinh');
             $table->string('anh_dai_dien');

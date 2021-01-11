@@ -14,17 +14,23 @@ class CreatePhimsTable extends Migration
     public function up()
     {
         Schema::create('phims', function (Blueprint $table) {
-            $table->increments('id')->unsigned()->index();
+            $table->increments('id');
             $table->string('ten_phim');
-            $table->string('hinh_anh')->nullable();
-            $table->integer('id_the_loai');
-            $table->foreign('id_the_loai')->references ('id')->on('the_loais');
+            $table->integer('id_the_loai')->unsigned();
             $table->float('thoi_luong');
-            $table->date('khoi_chieu')->nullable();
+
+            $date=getdate();
+            $table->date('khoi_chieu')->default($date['year'].'-'.$date['mon'].'-'.$date['mday']);
+            $table->string('hinh_anh')->nullable();
+            $table->float('diem')->nullable();
+            $table->integer('tuoi')->nullable();
             $table->string('tom_tat')->nullable();
             $table->string('trailer')->nullable();
-            $table->boolean('trang_thai')->default('1');
-            $table->timestamps(0);
+            $table->tinyInteger('trang_thai')->default(1);
+            $table->timestamps();
+
+            //foreign key
+            $table->foreign('id_the_loai')->references('id')->on('the_loais');
         });
     }
 

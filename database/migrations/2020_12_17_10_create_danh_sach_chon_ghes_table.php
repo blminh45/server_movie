@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVesTable extends Migration
+class CreateDanhSachChonGhesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,15 @@ class CreateVesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ves', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('danh_sach_chon_ghes', function (Blueprint $table) {
+            $table->integer('id_ghe');
+            $table->integer('id_rap');
             $table->integer('id_lich_chieu')->unsigned();
-            $table->integer('id_khach_hang')->unsigned();
-            $table->integer('id_ghe')->unsigned();
-            $table->unsignedDecimal('gia',6,2)->default(80);
-            $date=getdate();
-            $table->date('ngay_mua')->default($date['year'].'-'.$date['mon'].'-'.$date['mday']);
             $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
-
+            
             //foreign key
             $table->foreign('id_lich_chieu')->references('id')->on('lich_chieus');
-            $table->foreign('id_khach_hang')->references('id')->on('khach_hangs');
-            $table->foreign('id_ghe')->references('id')->on('ghes');
         });
     }
 
@@ -38,6 +32,6 @@ class CreateVesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ves');
+        Schema::dropIfExists('danh_sach_chon_ghes');
     }
 }

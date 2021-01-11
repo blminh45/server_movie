@@ -14,4 +14,8 @@ class phim extends Model
     {
         return $this->belongsTo('App\the_loai', 'id_the_loai', 'id');
     }
+
+    public function LichChieu(){
+        return $this->hasMany('App\LichChieu','id_phim','id');
+    }
 }
