@@ -14,43 +14,7 @@ function layDanhSachPhim(){
     });
 }
 
-function layThongTinRowClick(){
-    var id = document.getElementById('bodyTablePhim').closest("tr").find("idPhim").text();
-
-    $.ajax({
-        type: 'GET',
-        cache: false,
-        url: '/api/ajax/phim',
-        async: true,
-        data: {
-            "_token": "{{ csrf_token() }}",
-            "id": id
-        },
-        success: function(res){
-            $(".modal-backdrop").remove();
-            var data = JSON.parse(res);
-
-            dienThongTinModal(data);
-
-            var el = document.getElementById('btnModal');
-            el.innerHTML = "Cap nhat phim";
-            el.onclick = capNhatPhim(id);
-        },
-        error: function(err){
-            $(".modal-backdrop").remove();
-            console.log('error: '+err);
-        }
-    });
-}
-
-function dienThongTinModal(data){
-    document.getElementById('txtname').value = data.ten_phim;
-    document.getElementById('select-theloai').value = data.id_the_loai;
-    document.getElementById('txtthoiluong').value = data.thoi_luong;
-    document.getElementById('txttrailer').value = data.trailer;
-    document.getElementById('txttomtat').value = data.tom_tat;
-    document.getElementById('hinh_anh').src = "/images/"+data.hinh_anh;
-}
+var el = document.getElementById('btnModal');
 
 function layThongTinModal(){
     var data = document.getElementById('formI');
@@ -71,6 +35,7 @@ function layThongTinModal(){
 }
 
 function themPhim(){
+    $("#mediumModal").modal("hide");
     var phim = layThongTinModal();
     $.ajax({
         type: 'POST',
@@ -84,30 +49,9 @@ function themPhim(){
         success: function(data){
             $(".modal-backdrop").remove();
             console.log("success: "+ data);
-            document.getElementById('bodyTablePhim').innerHTML = result;
-        },
-        error: function(data){
-            $(".modal-backdrop").remove();
             document.getElementById('bodyTablePhim').innerHTML = data;
-            console.log('fail: '+data);
-        }
-    });
-}
-
-function capNhatPhim(id){
-    var phim = layThongTinModal();
-    $.ajax({
-        type: 'POST',
-        cache: false,
-        url: '/api/ajax/cap-nhat-phim',
-        data: {
-            "_token": "{{ csrf_token() }}",
-            "id": id,
-            "phim": phim
-        },
-        success: function(data){
-            $(".modal-backdrop").remove();
-            document.getElementById('bodyTablePhim').innerHTML = data;
+            
+            document.getElementById("formI").reset();
         },
         error: function(data){
             $(".modal-backdrop").remove();
@@ -118,11 +62,8 @@ function capNhatPhim(id){
 }
 
 document.getElementById('btnThem').onclick = function(){
-    document.getElementById("formI").reset();
-    var el = document.getElementById('btnModal');
     el.innerHTML = "Them phim";
     el.onclick = themPhim;
     document.getElementById('titleModal').innerHTML = "Them phim";
 }
 
-document.getElementById('getPhim').onclick = layThongTinRowClick;

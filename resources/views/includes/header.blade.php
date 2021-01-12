@@ -210,12 +210,12 @@
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <img alt="" src="{{ asset('images/2.png') }}">
-                    <span class="username">Cinema</span>
+                    <span class="username"></span>
                     <b class="caret"></b>
                 </a>
 
                 <ul class="dropdown-menu extended logout">
-                    <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                    <li><a href="/logout"><i class="fa fa-cog"></i>Đăng xuất</a></li>
                     <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                 </ul>
             </li>

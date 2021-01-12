@@ -9,6 +9,9 @@ use App\chi_nhanh;
 use App\the_loai;
 use App\khach_hang;
 use App\suat_chieu;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+use PhpParser\Node\Expr\FuncCall;
 
 class HomeController extends Controller
 {
@@ -19,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -31,27 +34,13 @@ class HomeController extends Controller
 //phim
     public function danh_sach_phim()
     {
-        $dsphim = phim::all();
+        $dsphim = phim::where('trang_thai', 1)->get();
         $the_loais = the_loai::all();
-        // $capnhatphim = phim::find($id);
         return view('pages.phim.danh-sach-phim', 
             [
-                'dsphim' => $dsphim,
+                'phim' => $dsphim,
                 'the_loais' => $the_loais
-            ]);//->with("dsphim", $dsphim);
-    }
-
-    public function them_phim(Request $req)
-    {
-        $the_loais = the_loai::all();
-        return view('pages.phim.them-phim', ["the_loais" => $the_loais]);
-    }
-
-    public function cap_nhat_phim($id, Request $req)
-    {
-        $the_loais = the_loai::all();
-        $capnhatphim = phim::find($id);
-        return view('pages.phim.cap-nhat-phim', ["the_loais"=>$the_loais, "capnhatphim"=>$capnhatphim]);
+            ]);
     }
 
 //the loai
@@ -59,17 +48,6 @@ class HomeController extends Controller
     {
         $the_loais = the_loai::all();
         return view('pages.the_loai.danh-sach-theloai')->with("dstheloai", $the_loais);
-    }
-
-    public function them_theloai()
-    {
-        return view('pages.the_loai.them-theloai');
-    }
-
-    public function cap_nhat_theloai($id)
-    {
-        $the_loais = the_loai::find($id);
-        return view('pages.the_loai.cap-nhat-theloai')->with("dstheloai", $the_loais);
     }
 
 //suat chieu
@@ -247,52 +225,6 @@ class HomeController extends Controller
         return redirect()->action('HomeController@danh_sach_theloai');
     }
 
-    public function ThemKhachHang(Request $request)
-    {
-        $img_name = "g8.jpg";
-        if ($request->hasFile('hinhdaidien')) {
-            $file = $request->file('hinhdaidien');
-            $img_name = $file->getClientOriginalName('hinhdaidien');
-            $file->move('images', $img_name);
-        }
-
-        $khach_hangs = new khach_hang;
-        $khach_hangs->ten = $request->tenkhachhang;
-        $khach_hangs->dia_chi = $request->diachiKH;
-        $khach_hangs->so_dien_thoai = $request->sodienthoai;
-        $khach_hangs->gioi_tinh = $request->gioitinh;
-        $khach_hangs->anh_dai_dien = $img_name;
-        $khach_hangs->email = $request->email;
-        $password = bcrypt('$request->matkhau');
-        $khach_hangs->mat_khau = $password;
-
-        $khach_hangs->save();
-        return redirect()->action('HomeController@danh_sach_thanh_vien');
-    }
-
-    public function SuaKhachHang(Request $request, $id)
-    {
-        $img_name = khach_hang::find($id)->hinhdaidien;
-        if ($request->hasFile('hinhdaidien')) {
-            $file = $request->file('hinhdaidien');
-            $img_name = $file->getClientOriginalName('hinhdaidien');
-            $file->move('images', $img_name);
-        }
-
-        $khach_hangs = khach_hang::find($id);
-        $khach_hangs->ten = $request->tenkhachhang;
-        $khach_hangs->dia_chi = $request->diachiKH;
-        $khach_hangs->so_dien_thoai = $request->sodienthoai;
-        $khach_hangs->gioi_tinh = $request->gioitinh;
-        $khach_hangs->anh_dai_dien = $img_name;
-        $khach_hangs->email = $request->email;
-        $password = bcrypt('$request->matkhau');
-        $khach_hangs->mat_khau = $password;
-
-        $khach_hangs->save();
-        return redirect()->action('HomeController@danh_sach_thanh_vien');
-    }
-
     public function ThemSuatChieu(Request $request)
     {
         $suat_chieus = new suat_chieu;
@@ -336,5 +268,29 @@ class HomeController extends Controller
 
         $phims->save();
         return redirect()->action('HomeController@//dsVe');
+    }
+
+    public function DangNhap(Request $req){
+
+        $arr = [
+            'email'=>$req->email,
+            'password'=>$req->password,
+        ];
+
+        if(Auth::attempt ($arr)){
+            $user = User::find(Auth::user()->id);
+            $req->session()->put('user' , $user);
+
+            return redirect('/');
+        }
+        else{
+            return 'Đăng nhập thất bại';
+        }
+    }
+
+    public function DangXuat()
+    {
+        Auth::logout();
+        return redirect('/login');
     }
 }
