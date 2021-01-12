@@ -4,16 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ve extends Model
+class Ve extends Model
 {
-    $table = "ves";
-    protected $fillable = ['id','id_suat_chieu','id_khach_hang','trang_thai'];
+    protected $table='ves';
+    protected $fillable = ['id','id_lich_chieu','id_khach_hang','id_ghe','trang_thai'];
 
-    public function ve() {
-        return $this->belongsTo('App\khach_hang', 'id_khach_hang', 'id');
+    public function khach_hang()
+    {
+        return $this->belongsTo('App\KhachHang','id_khach_hang','id');
     }
 
-    public function suatchieu() {
-        return $this->hasMany('App\suat_chieu', 'id_suat_chieu', 'id');
+    public function Ghe(){
+        return $this->belongsTo('App\Ghe','id_ghe','id');
+    }
+    
+    public function LichChieu(){
+        return $this->belongsTo('App\lichChieu','id_lich_chieu','id');
     }
 }
