@@ -16,7 +16,7 @@ class CreateDanhSachGhesTable extends Migration
         Schema::create('danh_sach_ghes', function (Blueprint $table) {
             $table->integer('id_ghe')->unsigned();
             $table->integer('id_rap')->unsigned();
-            $table->boolean('trang_thai')->default(1);
+            $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
 
             //primary key

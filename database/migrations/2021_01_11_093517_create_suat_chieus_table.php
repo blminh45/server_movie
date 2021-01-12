@@ -19,7 +19,7 @@ class CreateSuatChieusTable extends Migration
             $table->date('ngay_chieu')->default($date['year'].'-'.$date['mon'].'-'.$date['mday']);
             $table->time('gio_chieu')->nullable();
             $table->unsignedDecimal('gia_suat_chieu',6,2)->default(50);
-            $table->boolean('trang_thai')->default(1);
+            $table->boolean('trang_thai')->default(true);
             $table->timestamps();
         });
     }

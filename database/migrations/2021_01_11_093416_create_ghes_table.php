@@ -18,7 +18,7 @@ class CreateGhesTable extends Migration
             $table->char('hang',1);
             $table->tinyInteger('cot');
             $table->unsignedDecimal('gia_ghe',6,2)->default(40);
-            $table->boolean('trang_thai')->default(1);
+            $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
         });
     }

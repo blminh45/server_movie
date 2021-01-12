@@ -18,7 +18,7 @@ class CreateRapsTable extends Migration
             $table->char('ten_rap',1);
             $table->tinyInteger('so_luong_ghe');
             $table->integer('id_chi_nhanh')->unsigned();
-            $table->boolean('trang_thai')->default(1);
+            $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
 
             $table->foreign('id_chi_nhanh')->references('id')->on('chi_nhanhs');

@@ -19,7 +19,7 @@ class CreateLichChieusTable extends Migration
             $table->integer('id_phim')->unsigned();
             $table->integer('id_suat_chieu')->unsigned();
             $table->unsignedDecimal('gia_lich_chieu',6,2)->default(80);
-            $table->boolean('trang_thai')->default(1);
+            $table->boolean('trang_thai')->default(true);
             $table->timestamps();
             $table->unique(['id_rap', 'id_suat_chieu']);
             //foreign key

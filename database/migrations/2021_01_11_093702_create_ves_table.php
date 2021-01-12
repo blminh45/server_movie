@@ -21,7 +21,7 @@ class CreateVesTable extends Migration
             $table->unsignedDecimal('gia_ve',6,2)->default(80);
             $date=getdate();
             $table->date('ngay_mua')->default($date['year'].'-'.$date['mon'].'-'.$date['mday']);
-            $table->boolean('trang_thai')->default(1);
+            $table->boolean('trang_thai')->default(true);
             $table->timestamps();
 
             //foreign key

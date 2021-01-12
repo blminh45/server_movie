@@ -23,7 +23,7 @@ class CreateKhachHangsTable extends Migration
             $table->string('gioi_tinh')->nullable();;
             $table->string('anh_dai_dien');
             $table->string('mat_khau');
-            $table->boolean('trang_thai')->default(1);
+            $table->boolean('trang_thai')->default(true);
             $table->timestamps();
         });
     }
