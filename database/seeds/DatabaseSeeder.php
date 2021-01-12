@@ -131,4 +131,15 @@ class DatabaseSeeder extends Seeder
             [ 'id_lich_chieu'=>2, 'id_khach_hang'=>5,'id_ghe'=>4,'gia'=>80],
         ]);
     }
+    // $this->call(KhachHangSeeder::class);
+    // $this->call(ChiNhanhSeeder::class);
+    // $this->call(RapSeeder::class);
+    // $this->call(GheSeeder::class);
+    // $this->call(DanhSachGheSeeder::class);
+    // $this->call(TheLoaiSeeder::class);
+    // $this->call(PhimSeeder::class);
+    // $this->call(SuatChieuSeeder::class);
+    // $this->call(DanhSachChonGheSeeder::class);
+    // $this->call(VeSeeder::class);
+    // $this->call(UserSeeder::class);
 }

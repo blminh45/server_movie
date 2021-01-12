@@ -48,7 +48,6 @@
             margin: 200px auto;
             background: white;
             padding: 3em;
-
         }
         input{
             width: 100%;
@@ -69,7 +68,7 @@
                 <div class="form-group row">
                     <div class="col-md-12">
                         <input id="email" type="email" class="form-control "
-                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>    
+                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -92,14 +91,14 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary">
-                         Login
-                     </button>
-                 </div>
-             </div>
-         </form>
-     </div>
- </div>
- <script type="text/javascript" src="{{ asset('js/style.js') }}"></script>
+                           Login
+                       </button>
+                   </div>
+               </div>
+           </form>
+       </div>
+   </div>
+   <script type="text/javascript" src="{{ asset('js/style.js') }}"></script>
 </body>
 
 </html>

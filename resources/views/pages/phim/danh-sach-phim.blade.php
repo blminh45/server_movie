@@ -197,6 +197,7 @@
                 $('#select-theloai').val(phim.id_the_loai);
             },
             error: function(err){
+                $('#errname').text(data.responseJSON.errors.ten_phim);
                 return err;
             }
         });

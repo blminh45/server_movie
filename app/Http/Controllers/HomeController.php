@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -271,7 +271,6 @@ class HomeController extends Controller
     }
 
     public function DangNhap(Request $req){
-
         $arr = [
             'email'=>$req->email,
             'password'=>$req->password,
@@ -294,3 +293,4 @@ class HomeController extends Controller
         return redirect('/login');
     }
 }
+?>

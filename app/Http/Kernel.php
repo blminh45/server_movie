@@ -44,6 +44,8 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             'checklogin' => [\App\Http\Middleware\CheckLogin::class],
         ],
+        'checklogin' => [\App\Http\Middleware\CheckLogin::class,],
+
     ];
 
     /**
