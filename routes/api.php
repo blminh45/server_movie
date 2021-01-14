@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\khach_hang;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +28,9 @@ Route::group(['prefix'=>'phim'], function (){
 Route::get('/danh-sach-the-loai', 'ApiController@danh_sach_the_loai')->name('danh-sach-the-loai');
 
 Route::group(['prefix'=>'rap-phim'], function (){
-    Route::get('danh-sach-rap', 'ApiController@danh-sach-rap')->name('danh-sach-rap');
+    Route::get('danh-sach-chi-nhanh', 'ApiController@danh_sach_chi_nhanh')->name('danh-sach-chi-nhanh');
+    Route::get('danh-sach-rap', 'ApiController@danh_sach_rap')->name('danh-sach-rap');
+    Route::get('danh-sach-ghe', 'ApiController@danh_sach_ghe')->name('danh-sach-ghe');
 });
 
 Route::group(['prefix'=>'ajax'], function() {
