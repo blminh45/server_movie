@@ -42,3 +42,4 @@ Route::group(['prefix'=>'ajax'], function() {
 });
 
 Route::get('/khach-hang', 'ApiController@DanhSachKhachHang')->name('khach-hang');
+Route::post('/thanh-toan', 'ApiController@ThanhToan')->name('thanh-toan');
