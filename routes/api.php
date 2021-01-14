@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::group(['prefix'=>'phim'], function (){
     Route::get('/danh-sach-phim', 'ApiController@danh_sach_phim')->name('danh-sach-phim');
@@ -25,6 +25,8 @@ Route::group(['prefix'=>'phim'], function (){
     Route::put('/sua-phim/{id}', 'ApiController@sua_phim')->name('sua-phim');
 });
 
+Route::get('/khach-hang','ApiController@danh_sach_khach_hang')->name('khach-hang');
+Route::get('/them-khach-hang','ApiController@them_kh')->name('them-khach-hang');
 Route::get('/danh-sach-the-loai', 'ApiController@danh_sach_the_loai')->name('danh-sach-the-loai');
 
 Route::group(['prefix'=>'rap-phim'], function (){
