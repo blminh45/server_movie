@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\khach_hang;
+use App\KhachHang;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +15,9 @@ use App\khach_hang;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::group(['prefix'=>'phim'], function (){
     Route::get('/danh-sach-phim', 'ApiController@danh_sach_phim')->name('danh-sach-phim');

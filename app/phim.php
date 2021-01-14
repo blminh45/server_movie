@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Phim extends Model
+class phim extends Model
 {
     protected $table='phims';
     protected $primaryKey='id';
@@ -12,10 +12,10 @@ class Phim extends Model
 
     public function the_loai()
     {
-        return $this->belongsTo('App\TheLoai', 'id_the_loai','id');
+        return $this->belongsTo('App\the_loai', 'id_the_loai','id');
     }
 
-    public function LichChieu(){
-        return $this->hasMany('App\LichChieu','id_phim','id');
+    public function lich_chieu(){
+        return $this->hasMany('App\lich_chieu','id_phim','id');
     }
 }

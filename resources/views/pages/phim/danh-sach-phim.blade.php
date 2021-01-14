@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         <div id="hinh_anh" style="height: 100px; width: 80%; margin-bottom: 5px;">
-                            <img id="modalHinhAnh" src="/images/{{ $item->hinh_anh }}" style="height: 80px; object-fit: scale-down;" alt="hinh anh" >
+                            <img id="modalHinhAnh" src="/images/p8.png" style="height: 80px; object-fit: scale-down;" alt="hinh anh" >
                         </div>
                         <label for="modalLayAnh">Tải ảnh lên</label>
                         <input type="file" class="form-control-file" id="modalLayAnh" name="hinhanh">
@@ -56,7 +56,7 @@
     <button id="btnCreate" type="button" class="btn btn-info btn-lg">Tạo mới</button>
     <hr>
     <div class="table-responsive">
-        <table id="tableUser" class="table table-bordered">
+        <table id="tablePhim" class="table table-bordered">
             <thead>
                 <tr class="info">
                     <th>Tên phim</th>
@@ -76,7 +76,7 @@
                     <td class="rowHinhAnh" style="width: 200px;"><img width="25%" src="/images/{{ $u->hinh_anh }}"></td>
                     <td class="rowTheLoai">{{ $u->the_loai->ten_the_loai }}</td>
                     <td class="rowThoiLuong">{{ $u->thoi_luong }}</td>
-                    <td class="rowNoiDung">{{ $u->noi_dung }}</td>
+                    <td class="rowNoiDung">{{ $u->tom_tat }}</td>
                     <td>
                         <button type="button" class="btn btn-success btn-lg btnEdit">
                             <i class="fa fa-pencil"></i>
@@ -94,7 +94,6 @@
             </tbody>
         </table>
     </div>
-
 </section>
 
 @endsection
@@ -152,7 +151,7 @@
         $('#myModal').modal();
         $('#titleModal').html("Thêm mới phim");
         $('#btnCreateModal').removeClass('hidden');
-
+        $('btnCreateModal').off('click');
         $('#btnCreateModal').on('click', function(){
             $.ajax({
                 type: 'POST',
@@ -167,7 +166,7 @@
                     console.log("create success: "+JSON.parse(data));
                     var result = JSON.parse(data);
 
-                    $('table tbody').append("<tr class='warning'><td style='display: none;' class='rowId'>"+result.id+"</td><td class='rowTenPhim'>"+result.ten_phim+"</td><td class='rowHinhAnh' style='width: 200px;'><img width='25%' src='/images/"+result.hinh_anh+"'></td><td class='rowTheLoai'>"+result.the_loai.ten_the_loai+"</td><td class='rowThoiLuong'>"+result.thoi_luong+"</td><td class='rowNoiDung'>"+result.tom_tat+"</td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Sua</span></button></td></tr>");
+                    $('table tbody').append("<tr class='warning'><td style='display: none;' class='rowId'>"+result.id+"</td><td class='rowTenPhim'>"+result.ten_phim+"</td><td class='rowHinhAnh' style='width: 200px;'><img width='25%' src='/images/"+result.hinh_anh+"'></td><td class='rowTheLoai'>"+result.the_loai.ten_the_loai+"</td><td class='rowThoiLuong'>"+result.thoi_luong+"</td><td class='rowNoiDung'>"+result.tom_tat+"</td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Cập nhật</span></button></td><td><button type='button' class='btn btn-default btn-lg btnDelete'><i class='glyphicon glyphicon-trash'></i><span>Xóa</span></button></td></tr>");
                 },
                 error: function(err){
                     console.log("fail: "+err);
@@ -186,8 +185,6 @@
                 "id": id
             },
             success: function(data){
-                console.log("get phim success: "+data.ten_phim);
-                console.log("get phim success: "+JSON.parse(data).ten_phim);
                 var phim = JSON.parse(data);
                 $('#modalTenPhim').val(phim.ten_phim);
                 $('#modalNoiDung').val(phim.tom_tat);
@@ -197,25 +194,27 @@
                 $('#select-theloai').val(phim.id_the_loai);
             },
             error: function(err){
-                $('#errname').text(data.responseJSON.errors.ten_phim);
-                return err;
+                console.log("error: "+err);
             }
         });
     }
 
-    $('#tableUser').on('click', '.btnEdit', function(){
+    $('#tablePhim').on('click', '.btnEdit', function(){
         removeClassHidden();
         setElementAttrModal(false);
         $('#myModal').modal();
         $('#titleModal').html("Cập nhật thông tin phim");
         $('#btnUpdateModal').removeClass('hidden');
 
+        // var id = $(this).closest("tr").find(".rowId").html();
         var id = $(this).closest("tr").attr("id");
-        console.log("id: "+id);
+        console.log("when click btnEdit id: "+id);
 
         getPhim(id);
 
+        $('#btnUpdateModal').off('click');
         $('#btnUpdateModal').on('click', function(){
+            console.log("id after click btnUpdateModal: " + id);
             $.ajax({
                 type: 'POST',
                 cache: false,
@@ -226,21 +225,15 @@
                     "phim": getInfoModal()
                 },
                 success: function(data){
-                    console.log("update success data: " + data);
-                    console.log("update success: "+JSON.parse(data).ten_phim);
                     var result = JSON.parse(data);
-                    console.log("update result: "+result.ten_phim);
+                    console.log("update success id: "+result.id);
+                    $('#myModal').modal('hide');
 
-                    $("table tr").each(function(){
-                        console.log("id: "+$(this).attr("id"));
-                        if($(this).find(".rowId").html() == id){
-                            console.log($(this).find(".rowTenPhim").html());
+                    $("#tablePhim > tbody > tr").each(function(){
+                        if($(this).find(".rowId").html() == result.id){
                             $(this).find(".rowTenPhim").html(result.ten_phim);
-                            console.log("ten phim: "+result.ten_phim);
                             $(this).find(".rowHinhAnh").html("<img width='25%' src='/images/"+result.hinh_anh+"'>");
-                            console.log("hinh anh: "+result.hinh_anh);
-                            $(this).find(".rowTheLoai").html(result.id_the_loai.ten_the_loai);
-                            console.log("the loai: "+result.id_the_loai);
+                            $(this).find(".rowTheLoai").html(result.the_loai.ten_the_loai);
                             $(this).find("rowThoiLuong").html(result.thoi_luong);
                             $(this).find("rowNoiDung").html(result.tom_tat);
                         }
@@ -251,13 +244,13 @@
                 }
             })
         });
-    })
+    });
 
-    $('#tableUser').on('click', '.btnDelete', function(){
+    $('#tablePhim').on('click', '.btnDelete', function(){
         removeClassHidden();
+        setElementAttrModal(true);
         $("#myModal").modal();
         $('#titleModal').html("Xóa phim");
-        setElementAttrModal(true);
         $('#btnDeleteModal').removeClass('hidden');
 
         var id = $(this).closest("tr").find(".rowId").text();
@@ -266,6 +259,7 @@
         console.log("index: "+$(this).closest("tr").attr("id"));
         getPhim(id);
 
+        $('#btnDeleteModal').off('click');
         $('#btnDeleteModal').on('click', function(){
             $.ajax({
                 type: 'POST',
