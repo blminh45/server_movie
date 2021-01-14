@@ -20,14 +20,14 @@
                     @foreach($ds_suat_chieu as $item)
                     <optgroup label="{{$item->phim->ten_phim}}">
                         <option text-align:center value="{{ $item->id }}">
-                            Rạp : {{$item->rap->chi_nhanh->ten_chi_nhanh}}
-                            Giờ chiếu : {{$item->gio_chieu}}
-                            Ngày chiếu : {{$item->ngay_chieu}}
+                            R?p : {{$item->rap->chi_nhanh->ten_chi_nhanh}}
+                            Gi? chi?u : {{$item->gio_chieu}}
+                            Ngày chi?u : {{$item->ngay_chieu}}
                         </option>
                         @endforeach
                 </select>
             </div>
-            <button type="sumbit">Gửi</button>
+            <button type="sumbit">G?i</button>
         </div>
     </form>
 </section>

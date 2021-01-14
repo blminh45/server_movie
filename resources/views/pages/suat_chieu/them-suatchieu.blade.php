@@ -2,42 +2,48 @@
 @section('noi-dung')
 
 <section class="wrapper">
-    <h2 class="title-h2  add-movie">THÊM SUẤT CHIẾU</h2>
+    <h2 class="title-h2  add-movie">THÊM SU?T CHI?U</h2>
     <form action='them-suatchieu' METHOD="POST">
         <div class="fb-w-40 d-in-bl f-left ">
             @csrf
             <div class="form-group">
-                <label for="select-rap">Tên rạp</label>
+                <label for="select-rap">Tên r?p</label>
                 <select class="form-control" id="select-rap" name="rapphim">
-                    <option>Tân Bình</option>
-                    <option>Tân Phú</option>
-                    <option>Bình Chánh</option>
-                    <option>Gò Vấp</option>
+                    @foreach($rap as $item)
+                    <option value="{{ $item->id }}">{{$item->chi_nhanh->ten_chi_nhanh}}</option>
+                    @endforeach
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="select-phim">Tên phim</label>
                 <select class="form-control" id="select-phim" name="phim">
-                    <option>Naruto</option>
-                    <option>Conan</option>
-                    <option>DOraemon</option>
+                    @foreach($phim as $item)
+                    <option value="{{ $item->id }}">{{$item->ten_phim}}</option>
+                    @endforeach
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="giochieu">Giờ chiếu</label>
-                <input type="time" class="form-control" id="txtgiochieu" name="giochieu" oninput="checkSuatChieu()">
-                <small id="errgiochieu" class="form-text text-danger"> Giờ chiếu không hợp lệ!</small>
+                <label for="giochieu">Gi? chi?u</label>
+                <select class="form-control" id="select-phim" name="giochieu" oninput="checkSuatChieu()">
+
+                    <option>09:00</option>
+                    <option>12:00</option>
+                    <option>15:00</option>
+                    <option>18:00</option>
+                    <option>21:00</option>
+                </select>
+
             </div>
 
             <div class="form-group">
-                <label for="ngaychieu">Ngày chiếu</label>
+                <label for="ngaychieu">Ngày chi?u</label>
                 <input type="date" class="form-control" id="txtngaychieu" name="ngaychieu" oninput="checkSuatChieu()">
-                <small id="errngaychieu" class="form-text text-danger"> Ngày chiếu không hợp lệ!</small>
+                <small id="errngaychieu" class="form-text text-danger"> Ngày chi?u không h?p l?!</small>
             </div>
 
-            <button type="sumbit">Gửi</button>
+            <button type="sumbit">G?i</button>
         </div>
     </form>
 </section>

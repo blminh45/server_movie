@@ -2,7 +2,7 @@
 @section('noi-dung')
 
 <section class="wrapper">
-    <h2 class="text-center title-h2">DANH SÁCH SUẤT CHIẾU</h2>
+    <h2 class="text-center title-h2">DANH SÁCH SU?T CHI?U</h2>
 
     <form class="form-inline bg-dark search-tv" action="">
         <input class="form-control mr-2" type="text" placeholder="Search">
@@ -12,26 +12,34 @@
     <table class="table table-all">
         <thead class="thead-dark table-all-dark">
             <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Rạp</th>
+                <th scope="col">R?p</th>
                 <th scope="col">Phim</th>
-                <th scope="col">Giờ</th>
+                <th scope="col">Gi?</th>
                 <th scope="col">Ngày</th>
+                <th scope="col">Delete</th>
             </tr>
         </thead>
-
         <tbody>
-            @for($i=0;$i<15;$i++)
+            @foreach($ds_suat_chieu as $item)
             <tr>
-                <td scope="row">{{ $i+1 }}</td>
-                <td scope="col">Tân Bình</td>
-                <td scope="col">Đứa con thởi tiết</td>
-                <td scope="col">6:30</td>
-                <td scope="col">24-12-2020</td>
+                <th>{{$item->rap->chi_nhanh->ten_chi_nhanh}}</th>
+                <th> {{$item->phim->ten_phim}}</th>
+                <th> {{$item->gio_chieu}}</th>
+                <th> {{$item->ngay_chieu}}</th>
+                <td><a type="submit" href="/pages/suat-chieu/xoa-suatchieu/{{$item->id}}"
+                        class="btn btn-danger">Delete</a>
+                </td>
             </tr>
-            @endfor
+            @endforeach
+
+
         </tbody>
     </table>
+
 </section>
+
+<!-- footer -->
+@include('includes.footer')
+<!-- / footer -->
 
 @endsection
