@@ -6,5 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class ve extends Model
 {
-    protected $fillable = ['id','id_suat_chieu','id_khach_hang','trang_thai'];
+    protected $table='ves';
+    protected $fillable = ['id','id_lich_chieu','id_khach_hang','id_ghe','trang_thai'];
+
+    public function khach_hang()
+    {
+        return $this->belongsTo('App\khach_hang','id_khach_hang','id');
+    }
+
+    public function ghe(){
+        return $this->belongsTo('App\ghe','id_ghe','id');
+    }
+
+    public function lich_chieu(){
+        return $this->belongsTo('App\lich_chieu','id_lich_chieu','id');
+    }
 }

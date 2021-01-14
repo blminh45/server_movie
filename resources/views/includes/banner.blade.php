@@ -55,25 +55,33 @@
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="{{ route('danh-sach-thanh-vien') }}">
+                        <i class="fa fa-tasks"></i>
+                        <span>Quản lí thành viên</span>
+                    </a>
+                    {{-- <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>Quản lí thành viên</span>
                     </a>
                     <ul class="sub">
                         <li><a href="{{ route('danh-sach-thanh-vien') }}">Danh sách thành viên</a></li>
                         <li><a href="{{ route('them-thanhvien') }}">Thêm thành viên</a></li>
-                    </ul>
+                    </ul> --}}
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="{{ route('danh-sach-suatchieu') }}">
+                        <i class="fa fa-tasks"></i>
+                        <span>Quản lí suất chiếu</span>
+                    </a>
+                    {{-- <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>Quản lí suất chiếu</span>
                     </a>
                     <ul class="sub">
                         <li><a href="{{ route('danh-sach-suatchieu') }}">Danh sách suất chiếu</a></li>
                         <li><a href="{{ route('them-suatchieu') }}">Thêm suất chiếu</a></li>
-                    </ul>
+                    </ul> --}}
                 </li>
 
                 <li>

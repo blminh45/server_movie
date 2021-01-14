@@ -13,10 +13,11 @@
         <thead class="thead-dark table-all-dark">
             <tr>
                 <th scope="col">STT</th>
+                <th scope="col">Rạp</th>
                 <th scope="col">Số ghế</th>
                 <th scope="col">Chi nhánh</th>
                 <th scope="col">Update</th>
-                <th scope="col">Action</th>
+                <th scope="col">Active</th>
             </tr>
         </thead>
 
@@ -24,37 +25,34 @@
             @foreach($dsrap as $item) 
             <tr>
                 <td>{{$item->id}}</td>
+                <td>{{ $item->ten_rap }}</td>
                 <td>{{$item->so_luong_ghe}}</td>
                 <td>{{ $item->chi_nhanh->ten_chi_nhanh }}</td>
-                <td><a type="submit" href="pages/rap-phim/cap-nhat-rap/{{$item->id}}" class="btn btn-warning">Update</a></td>
+                <td><a type="submit" href="cap-nhat-rap/{{$item->id}}" class="btn btn-warning">Update</a></td>
                 <td>
                     <label class="switch">
                         @if($item->trang_thai == 1)
-                        <input type="checkbox" checked>
+                        <input type="checkbox" checked value="{{ $item->trang_thai }}">
                         @else <input type="checkbox">
                         @endif
                         <span class="slider round"></span>
                     </label>
-              </td>
-          </tr>
-          @endforeach
-      </tbody>
-  </table>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </section>
-
-<!-- footer -->
-@include('includes.footer')
-<!-- / footer -->
 
 @endsection
 
 @section('script')
 <script>
-  $(function() {
-    $('#toggle-two').bootstrapToggle({
-      on: 'Enabled',
-      off: 'Disabled'
-  });
+  // $(function() {
+  //   $('#toggle-two').bootstrapToggle({
+  //     on: 'Enabled',
+  //     off: 'Disabled'
+  // });
 });
 </script>
 @endsection

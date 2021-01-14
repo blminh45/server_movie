@@ -10,6 +10,6 @@ class chi_nhanh extends Model
     protected $fillable = ['id','ten_chi_nhanh','dia_chi','trang_thai'];
 
     public function rap() {
-        $this->hasMany('App\rap', 'id_chi_nhanh', 'id');
+        $this->hasMany('App\Rap', 'id_chi_nhanh', 'id');
     }
 }

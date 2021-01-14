@@ -8,28 +8,28 @@
             @csrf
             <div class="form-group">
                 <label for="txtname">Tên thành viên</label>
-                <input type="text" class="form-control" id="txtname" name="tenkhachhang"
+                <input type="text" class="form-control" id="txtname" required name="tenkhachhang"
                 value="{{$khach_hangs->ten}}">
-                <small id="namemovie" class="form-text text-danger"> Vui lòng nhập tên phim!</small>
+                {{-- <small id="namemovie" class="form-text text-danger"> Vui lòng nhập tên phim!</small> --}}
             </div>
 
             <div class="form-group">
                 <label for="txtname">Địa chỉ</label>
-                <input type="text" class="form-control" id="txtname" name="diachiKH"
+                <input type="text" class="form-control" id="txtname" required name="diachiKH"
                 value="{{$khach_hangs->dia_chi}}">
-                <small id="namemovie" class="form-text text-danger"> Vui lòng nhập tên phim!</small>
+                {{-- <small id="namemovie" class="form-text text-danger"> Vui lòng nhập tên phim!</small> --}}
             </div>
 
             <div class="form-group">
                 <label for="noidung">Số điện thoại</label>
                 <input class="form-control" id="noidung" rows="8" name="sodienthoai"
                 value="{{$khach_hangs->so_dien_thoai}}">
-                <small id="noidung" class="form-text text-danger"> Vui lòng nhập nội dung phim!</small>
+                {{-- <small id="noidung" class="form-text text-danger"> Vui lòng nhập nội dung phim!</small> --}}
             </div>
 
             <div class="form-group">
                 <label for="poster">Ảnh đại diện</label>
-                <input type="file" class="form-control-file" id="poster" name="hinhdaidien">
+                <input type="file" class="form-control-file" required id="poster" name="hinhdaidien">
 
                 <img style="width:40%; " src="/images/{{$khach_hangs->anh_dai_dien}}">
             </div>
@@ -62,8 +62,8 @@
 
             <div class="form-group">
                 <label for="txtthoiluong">Email</label>
-                <input type="text" class="form-control" id="txtname" name="email" value="{{$khach_hangs->email}}">
-                <small id="thoiluong" class="form-text text-danger"> Vui lòng nhập thời lượng!</small>
+                <input type="text" class="form-control" id="txtname"  required name="email" value="{{$khach_hangs->email}}">
+                {{-- <small id="thoiluong" class="form-text text-danger"> Vui lòng nhập thời lượng!</small> --}}
             </div>
 
             <button type="submit">Gửi</button>

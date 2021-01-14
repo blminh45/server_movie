@@ -25,7 +25,7 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->ten_the_loai}}</td>
                 <td>
-                    <a type="submit" href="/the-loai/cap-nhat-theloai/{{$item->id}}" class="btn btn-warning">Update</a>
+                    <a type="submit" href="cap-nhat-theloai/{{$item->id}}" class="btn btn-warning">Update</a>
                 </td>
                 <td>
                     <button class="btn btn-secondary" style="background-color: #606060; color: #fff;">Delete</button>
@@ -35,9 +35,5 @@
         </tbody>
     </table>
 </section>
-
-<!-- footer -->
-@include('includes.footer')
-<!-- / footer -->
 
 @endsection
