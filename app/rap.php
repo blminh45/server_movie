@@ -20,8 +20,4 @@ class rap extends Model
     public function lich_chieu(){
         return $this->hasMany('App\lich_chieu','id_rap','id');
     }
-
-    public function ghe() {
-        return $this->belongsToMany('App\ghe', 'danh_sach_ghe', 'id_rap', 'id_ghe');
-    }
 }

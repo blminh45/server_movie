@@ -232,11 +232,11 @@
 
                     $("#tablePhim > tbody > tr").each(function(){
                         if($(this).find(".rowId").html() == result.id){
-                            $(this).find(".rowTenPhim").html(result.ten_phim);
                             $(this).find(".rowHinhAnh").html("<img width='25%' src='/images/"+result.hinh_anh+"'>");
-                            $(this).find(".rowTheLoai").html(result.the_loai.ten_the_loai);
-                            $(this).find("rowThoiLuong").html(result.thoi_luong);
-                            $(this).find("rowNoiDung").html(result.tom_tat);
+                            $(this).find(".rowTenPhim").text(result.ten_phim);
+                            $(this).find(".rowTheLoai").text(result.the_loai.ten_the_loai);
+                            $(this).find(".rowThoiLuong").text(result.thoi_luong);
+                            $(this).find(".rowNoiDung").text(result.tom_tat);
                         }
                     })
                 },
