@@ -15,16 +15,12 @@ class CreateSuatChieusTable extends Migration
     {
         Schema::create('suat_chieus', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_rap')->unsigned();
-            $table->integer('id_phim')->unsigned();
-            $table->date('ngay_chieu');
+            $date=getdate();
+            $table->date('ngay_chieu')->default($date['year'].'-'.$date['mon'].'-'.$date['mday']);
             $table->time('gio_chieu')->nullable();
-            $table->tinyInteger('trang_thai')->default(1);
+            $table->unsignedDecimal('gia_suat_chieu',6,2)->default(50);
+            $table->boolean('trang_thai')->default(true);
             $table->timestamps();
-
-            //foreign key
-            $table->foreign('id_rap')->references('id')->on('raps');
-            $table->foreign('id_phim')->references('id')->on('phims');
         });
     }
 

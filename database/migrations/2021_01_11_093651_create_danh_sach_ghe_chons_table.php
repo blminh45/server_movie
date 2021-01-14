@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDanhSachChonGhesTable extends Migration
+class CreateDanhSachGheChonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateDanhSachChonGhesTable extends Migration
      */
     public function up()
     {
-        Schema::create('danh_sach_chon_ghes', function (Blueprint $table) {
+        Schema::create('danh_sach_ghe_chons', function (Blueprint $table) {
             $table->integer('id_ghe');
             $table->integer('id_rap');
-            $table->integer('id_suat_chieu')->unsigned();
-            $table->boolean('trang_thai')->default(1);
+            $table->integer('id_lich_chieu')->unsigned();
+            $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
             
             //foreign key
-            $table->foreign('id_suat_chieu')->references('id')->on('suat_chieus');
+            $table->foreign('id_lich_chieu')->references('id')->on('lich_chieus');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateDanhSachChonGhesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('danh_sach_chon_ghes');
+        Schema::dropIfExists('danh_sach_ghe_chons');
     }
 }
