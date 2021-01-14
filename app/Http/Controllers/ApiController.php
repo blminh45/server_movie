@@ -46,8 +46,20 @@ class ApiController extends Controller
         $result = chi_nhanh::join('raps', 'chi_nhanhs.id', '=', 'raps.id_chi_nhanh')->get();
         return response()->json($result, Response::HTTP_OK);
     }
+    public function them_kh(Request $request){
+        $kh = new khach_hang;
+        $kh->ten = $request->ten;
+        $kh->dia_chi = $request->dia_chi;
+        $kh->ngay_sinh = $request->ngay_sinh;
+        $kh->so_dien_thoai = $request->so_dien_thoai;
+        $kh->gioi_tinh = $request->gioi_tinh;
+        $kh->anh_dai_dien = $request->anh_dai_dien;
+        $kh->mat_khau = $request->mat_khau;
+        $kh->email = $request->email;
+        $kh->trang_thai = $request->trang_thai = 1;
+        $kh->save();
 
-    public function them_kh(Request $req){
-        return response()->json(khach_hang::create($req->all()),200);
+        return response()->json(['mess'=>'true']);
+        //return response()->json(khach_hang::create($req->all()),200);
     }
 }
