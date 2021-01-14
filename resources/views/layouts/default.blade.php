@@ -189,7 +189,6 @@
     <!-- //calendar -->
 
     <script type="text/javascript" src="{{ asset('js/style.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/danh_sach_phim_ajax.js') }}"></script>
     @yield('script')
 </body>
 

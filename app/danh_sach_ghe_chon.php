@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DanhSachGheChon extends Model
+class danh_sach_ghe_chon extends Model
 {
     protected $table='danh_sach_ghe_chons';
     protected $fillable = ['id_ghe','id_rap','id_lich_chieu','trang_thai'];
 
-    public function LichChieu()
+    public function lich_chieu()
     {
-        return $this->belongsTo('App\LichChieu','id_lich_chieu','id');
+        return $this->belongsTo('App\lich_chieu','id_lich_chieu','id');
     }
 }

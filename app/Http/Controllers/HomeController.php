@@ -9,9 +9,6 @@ use App\chi_nhanh;
 use App\the_loai;
 use App\khach_hang;
 use App\suat_chieu;
-use Illuminate\Support\Facades\Auth;
-use App\User;
-use PhpParser\Node\Expr\FuncCall;
 
 class HomeController extends Controller
 {
@@ -218,7 +215,7 @@ class HomeController extends Controller
 
     public function SuaTheLoai(Request $request, $id)
     {
-        $the_loais = the_loai::find($id);
+        $the_loais = the_loais::find($id);
         $the_loais->ten_the_loai = $request->tentheloai;
 
         $the_loais->save();
@@ -270,27 +267,27 @@ class HomeController extends Controller
         return redirect()->action('HomeController@//dsVe');
     }
 
-    public function DangNhap(Request $req){
-        $arr = [
-            'email'=>$req->email,
-            'password'=>$req->password,
-        ];
+    // public function DangNhap(Request $req){
+    //     $arr = [
+    //         'email'=>$req->email,
+    //         'password'=>$req->password,
+    //     ];
 
-        if(Auth::attempt ($arr)){
-            $user = User::find(Auth::user()->id);
-            $req->session()->put('user' , $user);
+    //     if(Auth::attempt ($arr)){
+    //         $user = User::find(Auth::user()->id);
+    //         $req->session()->put('user' , $user);
 
-            return redirect('/');
-        }
-        else{
-            return 'Đăng nhập thất bại';
-        }
-    }
+    //         return redirect('/');
+    //     }
+    //     else{
+    //         return 'Đăng nhập thất bại';
+    //     }
+    // }
 
-    public function DangXuat()
-    {
-        Auth::logout();
-        return redirect('/login');
-    }
+    // public function DangXuat()
+    // {
+    //     Auth::logout();
+    //     return redirect('/login');
+    // }
 }
 ?>
