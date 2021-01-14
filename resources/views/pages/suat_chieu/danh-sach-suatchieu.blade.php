@@ -17,29 +17,21 @@
                 <th scope="col">Phim</th>
                 <th scope="col">Giờ</th>
                 <th scope="col">Ngày</th>
-                <th scope="col">Update</th>
-                <th scope="col">Delete</th>
             </tr>
         </thead>
 
         <tbody>
-            @for($i=0;$i<15;$i++) <tr>
-                <th scope="row">{{ $i+1 }}</th>
-                <th scope="col">Tân Bình</th>
-                <th scope="col">Đứa con thởi tiết</th>
-                <th scope="col">6:30</th>
-                <th scope="col">24-12-2020</th>
-                <td><button class="btn btn-warning">Update</button></td>
-                <td><button class="btn btn-secondary" style="background-color: #606060; color: #fff;">Delete</button>
-                </td>
-                </tr>
-                @endfor
+            @for($i=0;$i<15;$i++)
+            <tr>
+                <td scope="row">{{ $i+1 }}</td>
+                <td scope="col">Tân Bình</td>
+                <td scope="col">Đứa con thởi tiết</td>
+                <td scope="col">6:30</td>
+                <td scope="col">24-12-2020</td>
+            </tr>
+            @endfor
         </tbody>
     </table>
 </section>
-
-<!-- footer -->
-@include('includes.footer')
-<!-- / footer -->
 
 @endsection

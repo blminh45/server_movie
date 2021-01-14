@@ -69,14 +69,14 @@ function checkAddMovie() {
        errtrailer.style.display="none";
      }
 
-     if(txtkhoichieu.value <= date)
-     {
-        errkhoichieu.style.display="block";
+     // if(txtkhoichieu.value <= date)
+     // {
+     //    errkhoichieu.style.display="block";
        
-     }
-     else{
-       errkhoichieu.style.display="none";
-     }
+     // }
+     // else{
+     //   errkhoichieu.style.display="none";
+     // }
 }
 
 

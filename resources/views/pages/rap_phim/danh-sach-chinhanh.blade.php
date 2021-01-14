@@ -26,7 +26,7 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->ten_chi_nhanh}}</td>
                 <td>{{$item->dia_chi}}</td>
-                <td><a type="submit" href="/chi-nhanh/cap-nhat-chi-nhanh/{{$item->id}}"
+                <td><a type="submit" href="cap-nhat-chi-nhanh/{{$item->id}}"
                         class="btn btn-warning">Update</a></td>
                 <td><button class="btn btn-secondary" style="background-color: #606060; color: #fff;">Delete</button>
                 </td>
@@ -35,9 +35,5 @@
         </tbody>
     </table>
 </section>
-
-<!-- footer -->
-@include('includes.footer')
-<!-- / footer -->
 
 @endsection
