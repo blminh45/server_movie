@@ -62,4 +62,8 @@ class ApiController extends Controller
         return response()->json(['mess'=>'true']);
         //return response()->json(khach_hang::create($req->all()),200);
     }
+
+    public function ThanhToan(Request $req){
+        return json_encode($req);
+    }
 }
