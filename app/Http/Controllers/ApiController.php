@@ -42,7 +42,9 @@ class ApiController extends Controller
     }
 
     public function danh_sach_chi_nhanh(){
-        return json_encode(chi_nhanh::all(), 200);
+        // return json_encode(chi_nhanh::all(), 200);
+        $result = chi_nhanh::join('raps', 'chi_nhanhs.id', '=', 'raps.id_chi_nhanh')->get();
+        return response()->json($result, Response::HTTP_OK);
     }
     public function them_kh(Request $request){
         $kh = new khach_hang;
