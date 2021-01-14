@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\phim;
 use App\the_loai;
-
+use App\khach_hang;
 class ApiController extends Controller
 {
     public function danh_sach_phim()
@@ -41,6 +41,10 @@ class ApiController extends Controller
 
     public function danh_sach_the_loai(){
         return response()->json(the_loai::all(), 200);
+    }
+
+    public function DanhSachKhachHang(){
+        return response()->json(khach_hang::all(),200);
     }
 
     // public function ThemKhachHang(Request $request)

@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\KhachHang;
+use App\khach_hang;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +39,5 @@ Route::group(['prefix'=>'ajax'], function() {
     Route::get('phim', 'AjaxController@GetPhim')->name('phim');
     Route::post('xoa-phim', 'AjaxController@XoaPhim')->name('xoa-phim');
 });
+
+Route::get('/khach-hang', 'ApiController@DanhSachKhachHang')->name('khach-hang');
