@@ -44,75 +44,12 @@ class HomeController extends Controller
             ]
         );
     }
-    public function danh_sach_ve()
-    {
-        $dsve = ve::where('trang_thai', 1)->get();
-        return view('pages.ve.danh-sach-ve')->with("dsve", $dsve);
-    }
-    public function danh_sach_suatchieu()
-    {
-        $suat_chieus = suat_chieu::where('trang_thai', 1)->get();
-        return view('pages.suat_chieu.danh-sach-suatchieu')->with("ds_suat_chieu", $suat_chieus);
-    }
-    public function danh_sach_lichchieu()
-    {
-        $lich_chieus = lich_chieu::where('trang_thai', 1)->get();
-        return view('pages.lich_chieu.danh-sach-lichchieu')->with("ds_lich_chieu", $lich_chieus);
-    }
-
 
     //the loai
     public function danh_sach_theloai()
     {
-        $the_loais = the_loai::all();
+        $the_loais = the_loai::where('trang_thai', 1)->get();
         return view('pages.the_loai.danh-sach-theloai')->with("dstheloai", $the_loais);
-    }
-    public function them_suatchieu()
-    {
-        return view('pages.suat_chieu.them-suatchieu');
-    }
-    public function sua_suatchieu($id)
-    {
-        $suat_chieus = suat_chieu::find($id);
-        return view('pages.suat_chieu.sua-suatchieu')->with('suat_chieu', $suat_chieus);
-    }
-    public function them_lichchieu()
-    {
-        $phims = phim::where('trang_thai', 1)->get();
-        $raps = rap::where('trang_thai', 1)->get();
-        $suat_chieus = suat_chieu::where('trang_thai', 1)->get();
-        $lich_chieus = lich_chieu::where('trang_thai', 1)->get();
-        return view('pages.lich_chieu.them-lichchieu')->with("phim", $phims)->with("rap", $raps)->with("ds_suat_chieu", $suat_chieus)->with("ds_lich_chieu", $lich_chieus);
-    }
-    public function them_ve()
-    {
-        $khach_hang = khach_hang::where('trang_thai', 1)->get();
-        $lich_chieus = lich_chieu::where('trang_thai', 1)->get();
-        $ghes = ghe::where('trang_thai', 1)->get();
-        return view('pages.ve.them-ve')->with("khach_hang", $khach_hang)->with("ds_lich_chieu", $lich_chieus)->with("ds_ghe", $ghes);
-    }
-
-
-
-    //rap
-    public function danh_sach_rap()
-    {
-        $c_nhanh = chi_nhanh::all();
-        $dsrap = rap::all();
-
-        return view('pages.rap_phim.danh-sach-rap', ["dsrap" => $dsrap]); //->with("dsrap", $dsrap);
-    }
-
-    public function them_rap()
-    {
-        $dschi_nhanh = chi_nhanh::where('trang_thai', 1)->get();
-        return view('pages.rap_phim.them-rap', ['dschi_nhanh' => $dschi_nhanh]);
-    }
-
-    public function cap_nhat_rap($id)
-    {
-        $raps = rap::find($id);
-        return view('pages.rap_phim.cap-nhat-rap')->with("capnhatrap", $raps);
     }
 
     //chi nhanh
@@ -122,15 +59,63 @@ class HomeController extends Controller
         return view('pages.rap_phim.danh-sach-chinhanh')->with("dschinhanh", $dschi_nhanh);
     }
 
-    public function them_chinhanh()
+    //rap
+    public function danh_sach_rap()
     {
-        return view('pages.rap_phim.them-chinhanh');
+        $c_nhanh = chi_nhanh::where('trang_thai', 1)->get();
+        $dsrap = rap::where('trang_thai', '<>', 0)->get();
+
+        return view('pages.rap_phim.danh-sach-rap', ["dsrap" => $dsrap, "dschi_nhanh" => $c_nhanh]);
     }
 
-    public function cap_nhat_chinhanh($id)
+    //suat chieu
+    public function danh_sach_suatchieu()
     {
-        $chi_nhanhs = chi_nhanh::find($id);
-        return view('pages.rap_phim.cap-nhat-chi-nhanh')->with("capnhatchinhanh", $chi_nhanhs);
+        $suat_chieus = suat_chieu::where('trang_thai', 1)->get();
+        return view('pages.suat_chieu.danh-sach-suatchieu')->with("ds_suat_chieu", $suat_chieus);
+    }
+
+    public function them_suatchieu()
+    {
+        return view('pages.suat_chieu.them-suatchieu');
+    }
+
+    public function sua_suatchieu($id)
+    {
+        $suat_chieus = suat_chieu::find($id);
+        $ds_suatchieu = suat_chieu::where('trang_thai', 1)->get();
+        return view('pages.suat_chieu.sua-suatchieu')->with('suat_chieu', $suat_chieus)->with('ds_suatchieu', $ds_suatchieu);
+    }
+
+    //lich chieu
+    public function danh_sach_lichchieu()
+    {
+        $lich_chieus = lich_chieu::where('trang_thai', 1)->get();
+        return view('pages.lich_chieu.danh-sach-lichchieu')->with("ds_lich_chieu", $lich_chieus);
+    }
+
+    public function them_lichchieu()
+    {
+        $phims = phim::where('trang_thai', 1)->get();
+        $raps = rap::where('trang_thai', 1)->get();
+        $suat_chieus = suat_chieu::where('trang_thai', 1)->get();
+        $lich_chieus = lich_chieu::where('trang_thai', 1)->get();
+        return view('pages.lich_chieu.them-lichchieu')->with("phim", $phims)->with("rap", $raps)->with("ds_suat_chieu", $suat_chieus)->with("ds_lich_chieu", $lich_chieus);
+    }
+
+    //ve
+    public function danh_sach_ve()
+    {
+        $dsve = ve::where('trang_thai', 1)->get();
+        return view('pages.ve.danh-sach-ve')->with("dsve", $dsve);
+    }
+
+    public function them_ve()
+    {
+        $khach_hang = khach_hang::where('trang_thai', 1)->get();
+        $lich_chieus = lich_chieu::where('trang_thai', 1)->get();
+        $ghes = ghe::where('trang_thai', 1)->get();
+        return view('pages.ve.them-ve')->with("khach_hang", $khach_hang)->with("ds_lich_chieu", $lich_chieus)->with("ds_ghe", $ghes);
     }
 
     //thanh vien
@@ -151,113 +136,7 @@ class HomeController extends Controller
         return view('pages.thanh_vien.cap-nhat-thanhvien')->with("khach_hangs", $khach_hangs);
     }
 
-
     //function
-    public function ThemPhim(Request $request)
-    {
-        $img_name = "g8.jpg";
-        if ($request->hasFile('poster')) {
-            $file = $request->file('poster');
-            $img_name = $file->getClientOriginalName('poster');
-            $file->move('images', $img_name);
-        }
-
-        $phims = new phim;
-        $phims->ten_phim = $request->tenphim;
-        $phims->hinh_anh = $img_name;
-        $phims->id_the_loai = $request->theloai;
-        $phims->thoi_luong = $request->thoiluong;
-        $newday = date("Y-m-d", strtotime($request->ngaykhoicchieu));
-        $phims->khoi_chieu = $newday;
-        $phims->tom_tat = $request->tomtat;
-
-        $phims->save();
-        return redirect()->action('HomeController@danh_sach_phim');
-    }
-
-    public function SuaPhim(Request $request, $id)
-    {
-        $img_name = phim::find($id)->hinh_anh;
-        if ($request->hasFile('poster')) {
-            $file = $request->file('poster');
-            $img_name = $file->getClientOriginalName('poster');
-            $file->move('images', $img_name);
-        }
-
-        $phims = phim::find($id);
-        $phims->ten_phim = $request->tenphim;
-        $phims->hinh_anh = $img_name;
-        $phims->id_the_loai = $request->theloai;
-        $phims->thoi_luong = $request->thoiluong;
-        $newday = date("Y-m-d", strtotime($request->ngaykhoicchieu));
-        $phims->khoi_chieu = $newday;
-        $phims->tom_tat = $request->tom_tat;
-
-        $phims->save();
-        return redirect()->action('HomeController@danh_sach_phim');
-    }
-
-    public function ThemRap(Request $request)
-    {
-        $raps = new rap;
-        $raps->ten_rap = 'rạp ' . (count(rap::where('id_chi_nhanh', $request->chi_nhanh)->get()) + 1);
-        $raps->so_luong_ghe = $request->soluongghe;
-        $raps->id_chi_nhanh = $request->chi_nhanh;
-        $raps->trang_thai = $request->trang_thai;
-
-        $raps->save();
-        return redirect()->action('HomeController@danh_sach_rap');
-    }
-
-    public function SuaRap(Request $request, $id)
-    {
-        $raps = rap::find($id);
-        $raps->so_luong_ghe = $request->soluongghe;
-        $raps->id_chi_nhanh = $request->chi_nhanh;
-        $raps->trang_thai = $request->trang_thai;
-
-        $raps->save();
-        return redirect()->action('HomeController@danh_sach_rap');
-    }
-
-    public function ThemChiNhanh(Request $request)
-    {
-        $chi_nhanhs = new chi_nhanh;
-        $chi_nhanhs->ten_chi_nhanh = $request->tenchinhanh;
-        $chi_nhanhs->dia_chi = $request->diachi;
-
-        $chi_nhanhs->save();
-        return redirect()->action('HomeController@danh_sach_chinhanh');
-    }
-
-    public function SuaChiNhanh(Request $request, $id)
-    {
-        $chi_nhanhs = chi_nhanh::find($id);
-        $chi_nhanhs->ten_chi_nhanh = $request->tenchinhanh;
-        $chi_nhanhs->dia_chi = $request->diachichinhanh;
-
-        $chi_nhanhs->save();
-        return redirect()->action('HomeController@danh_sach_chinhanh');
-    }
-
-    public function ThemTheLoai(Request $request)
-    {
-        $the_loais = new the_loai;
-        $the_loais->ten_the_loai = $request->tentheloai;
-
-        $the_loais->save();
-        return redirect()->action('HomeController@danh_sach_theloai');
-    }
-
-    public function SuaTheLoai(Request $request, $id)
-    {
-        $the_loais = the_loai::find($id);
-        $the_loais->ten_the_loai = $request->tentheloai;
-
-        $the_loais->save();
-        return redirect()->action('HomeController@danh_sach_theloai');
-    }
-
     public function ThemSuatChieu(Request $request)
     {
 
@@ -274,6 +153,7 @@ class HomeController extends Controller
         $suat_chieus->save();
         return redirect()->action('HomeController@danh_sach_suatchieu');
     }
+
     public function SuaSuatChieu(Request $request, $id)
     {
 
@@ -290,6 +170,15 @@ class HomeController extends Controller
         $suat_chieus->save();
         return redirect()->action('HomeController@danh_sach_suatchieu');
     }
+
+    public function xoa_suatchieu($id)
+    {
+        $suat_chieus = suat_chieu::find($id);
+        $suat_chieus->trang_thai = "0";
+        $suat_chieus->save();
+        return redirect()->action('HomeController@danh_sach_suatchieu');
+    }
+
     public function ThemLichChieu(Request $request)
     {
         $lich_chieus = new lich_chieu;
@@ -301,14 +190,6 @@ class HomeController extends Controller
         $lich_chieus->gia_lich_chieu = $suat_chieus->gia_suat_chieu + $phims->gia_phim;
         $lich_chieus->save();
         return redirect()->action('HomeController@danh_sach_lichchieu');
-    }
-
-    public function xoa_suatchieu($id)
-    {
-        $suat_chieus = suat_chieu::find($id);
-        $suat_chieus->trang_thai = "0";
-        $suat_chieus->save();
-        return redirect()->action('HomeController@danh_sach_suatchieu');
     }
 
     public function xoa_lichchieu($id)
@@ -331,29 +212,4 @@ class HomeController extends Controller
         $ves->save();
         return redirect()->action('HomeController@danh_sach_ve');
     }
-
-
-
-    // public function DangNhap(Request $req){
-    //     $arr = [
-    //         'email'=>$req->email,
-    //         'password'=>$req->password,
-    //     ];
-
-    //     if(Auth::attempt ($arr)){
-    //         $user = User::find(Auth::user()->id);
-    //         $req->session()->put('user' , $user);
-
-    //         return redirect('/');
-    //     }
-    //     else{
-    //         return 'Đăng nhập thất bại';
-    //     }
-    // }
-
-    // public function DangXuat()
-    // {
-    //     Auth::logout();
-    //     return redirect('/login');
-    // }
 }

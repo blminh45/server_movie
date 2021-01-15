@@ -9,8 +9,12 @@
 
             <div class="form-group">
                 <label for="giochieu">Giờ chiếu</label>
-                <select class="form-control" id="select-phim" name="giochieu">
-                    @if($suat_chieu->gio_chieu=="09:00:00")
+                <select class="form-control" name="giochieu">
+                    @foreach($ds_suatchieu as $item)
+                    <option value="{{ $suat_chieu->id }}">{{ $item->gio_chieu }}</option>
+                    @endforeach
+
+                    <!-- @if($suat_chieu->gio_chieu=="09:00:00")
                     {
                     <option>09:00</option>
                     <option>12:00</option>
@@ -50,7 +54,7 @@
                     <option>18:00</option>
 
                     }
-                    @endif
+                    @endif -->
                 </select>
 
             </div>

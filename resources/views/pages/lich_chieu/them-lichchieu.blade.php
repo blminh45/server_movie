@@ -29,10 +29,11 @@
             <div class="form-group">
                 <label for="select-phim">Tên phim</label>
                 <select class="form-control" id="select-phim" name="phim">
-
+                    @foreach($phim as $p)
+                    <option value="{{ $p->id }}">{{ $p->ten_phim }}</option>
+                    @endforeach
                 </select>
             </div>
-
 
             <script>
             function check(lst, id) {
@@ -76,6 +77,16 @@
                             }
                             lst.push(phim);
                         }
+                    }
+                }
+
+                if (lst_lichchieu.length == 0) {
+                    for (let item = 0; item < lst_phim.length; item++) {
+                        let phim = {
+                            id: lst_phim[item].id,
+                            ten_phim: lst_phim[item].ten_phim
+                        }
+                        lst.push(phim);
                     }
                 }
                 showListPhim(lst);
