@@ -118,7 +118,7 @@ class ApiController extends Controller
         $kq = rap::join('lich_chieus', 'raps.id', '=', 'lich_chieus.id_rap')
         ->join('chi_nhanhs', 'raps.id_chi_nhanh', '=', 'chi_nhanhs.id')
         ->join('suat_chieus', 'suat_chieus.id', '=', 'lich_chieus.id_suat_chieu')
-        ->get(['lich_chieus.*', 'raps.ten_rap', 'chi_nhanhs.id_chi_nhanh', 'chi_nhanhs.ten_chi_nhanh', 'suat_chieus.*']);
+        ->get(['lich_chieus.*', 'raps.ten_rap', 'chi_nhanhs.id', 'chi_nhanhs.ten_chi_nhanh', 'suat_chieus.*']);
         return json_encode($kq);
     }
 }
