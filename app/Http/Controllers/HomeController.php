@@ -115,7 +115,8 @@ class HomeController extends Controller
         $khach_hang = khach_hang::where('trang_thai', 1)->get();
         $lich_chieus = lich_chieu::where('trang_thai', 1)->get();
         $ghes = ghe::where('trang_thai', 1)->get();
-        return view('pages.ve.them-ve')->with("khach_hang", $khach_hang)->with("ds_lich_chieu", $lich_chieus)->with("ds_ghe", $ghes);
+        $ves = ve::all();
+        return view('pages.ve.them-ve')->with("ds_ve", $ves)->with("khach_hang", $khach_hang)->with("ds_lich_chieu", $lich_chieus)->with("ds_ghe", $ghes);
     }
 
     //thanh vien
