@@ -81,13 +81,12 @@ class ApiController extends Controller
     }
 
 
-    public function phim_theloai($id)
+    public function phim_theloai()
     {
 
-        $phim = phim::find($id);
-        $theloai = the_loai::find($phim->id_the_loai);
-        $arrays[] =  [$phim, $theloai];
-        return json_encode($arrays);
+        $phim = the_loai::join('phims', 'the_loais.id', '=', 'phims.id_the_loai')
+                    ->get(['phims.*', 'the_loais.ten_the_loai']);
+        return json_encode($phim);
     }
 
     public function chitiet_lichchieu($id)
@@ -110,15 +109,24 @@ class ApiController extends Controller
     {
         $Ve = DB::select('select v.id, kh.ten, CONCAT(g.hang,g.cot) as ghe, p.ten_phim AS Phim,p.thoi_luong AS ThoiLuong, sc.ngay_chieu AS Ngay, sc.gio_chieu AS gio, r.ten_rap AS Rap , cn.dia_chi DiaChi, v.gia_ve
         from ves v,ghes g, khach_hangs kh, lich_chieus lc, phims p , suat_chieus sc , raps r, chi_nhanhs cn
+        where v.id_ghe=g.id and v.id_khach_hang=kh.id AND v.id_lich_chieu=lc.id AND lc.id_phim= p.id AND lc.id_suat_chieu = sc.id AND lc.id_rap=r.id AND r.id_chi_nhanh = cn.id ');
+        return response()->json($Ve, Response::HTTP_OK);
+    }
+
+    public function danh_sach_ve_kh($id)
+    {
+        $Ve = DB::select('select v.id, kh.ten, CONCAT(g.hang,g.cot) as ghe, p.ten_phim AS Phim,p.thoi_luong AS ThoiLuong, sc.ngay_chieu AS Ngay, sc.gio_chieu AS gio, r.ten_rap AS Rap , cn.dia_chi DiaChi, v.gia_ve
+        from ves v,ghes g, khach_hangs kh, lich_chieus lc, phims p , suat_chieus sc , raps r, chi_nhanhs cn
         where v.id_ghe=g.id and v.id_khach_hang=kh.id AND v.id_lich_chieu=lc.id AND lc.id_phim= p.id AND lc.id_suat_chieu = sc.id AND lc.id_rap=r.id AND r.id_chi_nhanh = cn.id  and v.id_khach_hang = ?', [1]);
         return response()->json($Ve, Response::HTTP_OK);
     }
 
-    public function ChiTietLichChieu(){
+    public function ChiTietLichChieu()
+    {
         $kq = rap::join('lich_chieus', 'raps.id', '=', 'lich_chieus.id_rap')
-        ->join('chi_nhanhs', 'raps.id_chi_nhanh', '=', 'chi_nhanhs.id')
-        ->join('suat_chieus', 'suat_chieus.id', '=', 'lich_chieus.id_suat_chieu')
-        ->get(['lich_chieus.*', 'raps.ten_rap', 'chi_nhanhs.ten_chi_nhanh', 'suat_chieus.*']);
+            ->join('chi_nhanhs', 'raps.id_chi_nhanh', '=', 'chi_nhanhs.id')
+            ->join('suat_chieus', 'suat_chieus.id', '=', 'lich_chieus.id_suat_chieu')
+            ->get(['lich_chieus.*', 'raps.ten_rap', 'chi_nhanhs.id', 'chi_nhanhs.ten_chi_nhanh', 'suat_chieus.*']);
         return json_encode($kq);
     }
 

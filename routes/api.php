@@ -25,7 +25,7 @@ Route::group(['prefix' => 'phim'], function () {
     Route::put('/sua-phim/{id}', 'ApiController@sua_phim')->name('sua-phim');
 });
 
-Route::get('/danh-sach-chi-nhanh', 'ApiController@danh_sach_the_loai')->name('danh-sach-chi-nhanh');
+Route::get('/danh-sach-the-loai', 'ApiController@danh_sach_the_loai')->name('danh-sach-the-loai');
 
 Route::group(['prefix' => 'rap-phim'], function () {
     Route::get('danh-sach-chi-nhanh', 'ApiController@danh_sach_chi_nhanh')->name('danh-sach-chi-nhanh');
@@ -58,12 +58,12 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::post('cap-nhat-chi-nhanh', 'AjaxController@CapNhatChiNhanh')->name('cap-nhat-chi-nhanh');
     Route::post('xoa-chi-nhanh', 'AjaxController@XoaChiNhanh')->name('xoa-chi-nhanh');
 });
-
 Route::get('/chitietlichchieu', 'ApiController@ChiTietLichChieu')->name('chitietlichchieu');
 Route::get('/suat-chieu', 'ApiController@danh_sach_suat_chieu')->name('suat-chieu');
 Route::get('/lich-chieu', 'ApiController@danh_sach_lich_chieu')->name('lich-chieu');
 Route::get('/ve', 'ApiController@danh_sach_ve')->name('ve');
-Route::get('/phim-theloai/{id}', 'ApiController@phim_theloai')->name('phim-theloai/{id}');
+Route::get('/ve/{id}', 'ApiController@danh_sach_ve_kh')->name('ve/{id}');
+Route::get('/phim-theloai', 'ApiController@phim_theloai')->name('phim-theloai');
 Route::get('/chitiet-lichchieu/{id}', 'ApiController@chitiet_lichchieu')->name('chitiet-lichchieu/{id}');
 
 Route::get('/khach-hang', 'ApiController@DanhSachKhachHang')->name('khach-hang');
