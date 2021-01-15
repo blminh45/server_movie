@@ -15,10 +15,8 @@ class BankController extends Controller
     }
 
     public function ThongTinTaiKhoan(Request $req){
-        $credential = new \stdClass();
-        $credential->STK = $req->STK;
-        $credential->mat_khau = $req->mat_khau;
-        if(BankController::KiemTraChuThe($credential))
+        $b_pass = bank::select('mat_khau')->where('STK', $req->STK)->get();
+        if(Hash::check($req->mat_khau, $b_pass[0]->mat_khau))
             return json_encode(bank::where('STK', $req->STK)->get(), 200);
         return json_encode("Not Found", 404);
     }
@@ -26,7 +24,7 @@ class BankController extends Controller
     public function KiemTraTaiKhoan($req){
         $tk = bank::where('STK', $req->STK);
         if($req->so_tien > $tk->so_du)
-            return json_encode("khong du so du tai khoan");
+            return json_encode("Fail", 202);
     }
 
     public function TruSoDu(Request $req) {

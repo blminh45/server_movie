@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 Route::group(['prefix' => 'phim'], function () {
     Route::get('/danh-sach-phim', 'ApiController@danh_sach_phim')->name('danh-sach-phim');
@@ -78,7 +78,5 @@ Route::group(['prefix' => 'bank'], function () {
 
 Route::group(['prefix' => 've'], function () {
     Route::get('danh-sach-ve', 'HomeController@danh_sach_ve')->name('danh-sach-ve');
-
-    Route::get('them-ve', 'HomeController@them_ve')->name('them-ve');
-    Route::post('them-ve', 'HomeController@ThemVe')->name('them-ve');
+    Route::post('them-ve', 'ApiController@ThemVe')->name('them-ve');
 });

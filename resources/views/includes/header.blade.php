@@ -210,12 +210,21 @@
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <img alt="" src="{{ asset('images/2.png') }}">
-                    <span class="username"></span>
+                    <span class="username">{{ Auth::user()->email }}</span>
                     <b class="caret"></b>
                 </a>
 
                 <ul class="dropdown-menu extended logout">
-                    <li><a href="/logout"><i class="fa fa-cog"></i>Đăng xuất</a></li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa fa-cog">{{ __('Logout') }}</i>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                     <li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
                 </ul>
             </li>

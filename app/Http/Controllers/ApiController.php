@@ -121,4 +121,21 @@ class ApiController extends Controller
         ->get(['lich_chieus.*', 'raps.ten_rap', 'chi_nhanhs.ten_chi_nhanh', 'suat_chieus.*']);
         return json_encode($kq);
     }
+
+    public function ThemVe(Request $request)
+    {
+        $ves = new ve;
+        $ves->id_lich_chieu = $request->lich_chieu;
+        $ves->id_khach_hang = $request->khach_hang;
+        $ves->id_ghe = $request->ghe;
+        $lich_chieus = lich_chieu::find($request->lich_chieu);
+        $ghes = ghe::find($request->ghe);
+        $ves->gia_ve = $lich_chieus->gia_lich_chieu + $ghes->gia_ghe;
+        $ves->save();
+
+        $code = new \stdClass();
+        $code->id_khach = $request->khach_hang;
+        $code->randNum = rand(10, 100);
+        return json_encode($code, 200);
+    }
 }

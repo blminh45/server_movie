@@ -20,12 +20,9 @@ use App\the_loai;
 |
 */
 
-// Route::get('/', function () {
-//     return view('pages.phim.demo', ["phim"=>phim::all(), "theloai"=>the_loai::all()]);
-// });
-Route::get('/', function () {
-    return view('pages.trang-chu');
-});
+Auth::routes();
+
+Route::get('/', 'HomeController@index');
 
 Route::group(['prefix' => 'pages'], function () {
     Route::group(['prefix' => 'phim'], function () {
