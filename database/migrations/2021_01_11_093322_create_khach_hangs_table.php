@@ -20,7 +20,6 @@ class CreateKhachHangsTable extends Migration
             $table->string('so_dien_thoai')->unique();
             $table->date('ngay_sinh')->nullable();;
             $table->string('email')->unique();
-            $table->string('gioi_tinh')->nullable();;
             $table->string('anh_dai_dien');
             $table->string('mat_khau');
             $table->boolean('trang_thai')->default(true);
