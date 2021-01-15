@@ -12,7 +12,8 @@ use App\chi_nhanh;
 use App\ghe;
 use App\lich_chieu;
 use App\suat_chieu;
-use Hamcrest\Core\HasToString;
+use App\ve;
+use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
@@ -93,15 +94,23 @@ class ApiController extends Controller
     {
 
         $lichchieu = lich_chieu::find($id);
-        $phim = phim::find($lichchieu->id_phim);
-        $rap = rap::find($lichchieu->id_rap);
-        $suatchieu = suat_chieu::find($phim->id_suat_chieu);
-        $arrays[] =  [$lichchieu, $phim, $rap, $suatchieu];
+        $phim =  phim::find($lichchieu->id_phim);
+        $rap =  rap::find($lichchieu->id_rap);
+        $suatchieu = suat_chieu::find($lichchieu->id_suat_chieu);
+        $arrays = [$phim, $rap, $suatchieu];
         return json_encode($arrays);
     }
 
     public function ThanhToan(Request $req)
     {
         return json_encode($req);
+    }
+
+    public function danh_sach_ve()
+    {
+        $Ve = DB::select('select v.id, kh.ten, CONCAT(g.hang,g.cot) as ghe, p.ten_phim AS Phim,p.thoi_luong AS ThoiLuong, sc.ngay_chieu AS Ngay, sc.gio_chieu AS gio, r.ten_rap AS Rap , cn.dia_chi DiaChi, v.gia_ve
+        from ves v,ghes g, khach_hangs kh, lich_chieus lc, phims p , suat_chieus sc , raps r, chi_nhanhs cn
+        where v.id_ghe=g.id and v.id_khach_hang=kh.id AND v.id_lich_chieu=lc.id AND lc.id_phim= p.id AND lc.id_suat_chieu = sc.id AND lc.id_rap=r.id AND r.id_chi_nhanh = cn.id  and v.id_khach_hang = ?', [1]);
+        return response()->json($Ve, Response::HTTP_OK);
     }
 }
