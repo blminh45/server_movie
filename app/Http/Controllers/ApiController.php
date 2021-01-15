@@ -52,7 +52,6 @@ class ApiController extends Controller
         $kh->dia_chi = $request->dia_chi;
         $kh->ngay_sinh = $request->ngay_sinh;
         $kh->so_dien_thoai = $request->so_dien_thoai;
-        $kh->gioi_tinh = $request->gioi_tinh;
         $kh->anh_dai_dien = $request->anh_dai_dien;
         $kh->mat_khau = $request->mat_khau;
         $kh->email = $request->email;
