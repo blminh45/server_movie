@@ -15,7 +15,7 @@ class ApiController extends Controller
 {
     public function danh_sach_phim()
     {
-        $phims = phim::ưhere('trang_thai', 1)->get();
+        $phims = phim::where('trang_thai', 1)->get();
         return response()->json($phims, Response::HTTP_OK);
     }
 
