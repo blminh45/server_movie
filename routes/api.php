@@ -72,7 +72,7 @@ Route::group(['prefix' => 'bank'], function () {
     Route::get('tai-khoan', 'BankController@ThongTinTaiKhoan')->name('tai-khoan');
 });
 
- Route::group(['prefix' => 've'], function () {
+Route::group(['prefix' => 've'], function () {
     Route::get('danh-sach-ve', 'HomeController@danh_sach_ve')->name('danh-sach-ve');
 
     Route::get('them-ve', 'HomeController@them_ve')->name('them-ve');
