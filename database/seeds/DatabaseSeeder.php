@@ -85,9 +85,9 @@ class DatabaseSeeder extends Seeder
     public function PhimSeeder()
     {
         DB::table('phims')->insert([
-            [ 'ten_phim'=>'Koe no katachi', 'id_the_loai'=>1, 'thoi_luong'=>130 ],
-            [ 'ten_phim'=>'Kimi no na wa', 'id_the_loai'=>2, 'thoi_luong'=>106 ],
-            [ 'ten_phim'=>'Kaguya-sama: Love is war', 'id_the_loai'=>5, 'thoi_luong'=>24 ]
+            [ 'ten_phim'=>'Koe no katachi', 'id_the_loai'=>1, 'thoi_luong'=>130, 'diem'=>8, 'tuoi'=>16, 'hinh_anh'=>'A_Silent_Voice_Film_Poster.jpg', 'tom_tat'=>'A_Silent_Voice_Film_Poster', 'trailer'=>'Q6iK6DjV_iE' ],
+            [ 'ten_phim'=>'Kimi no na wa', 'id_the_loai'=>2, 'thoi_luong'=>106, 'diem'=>8, 'tuoi'=>16, 'hinh_anh'=>'p12.jpg', 'tom_tat'=>'Kimi no na wa', 'trailer'=>'Q6iK6DjV_iE' ],
+            [ 'ten_phim'=>'Kaguya-sama: Love is war', 'id_the_loai'=>5, 'thoi_luong'=>24, 'diem'=>8, 'tuoi'=>16, 'hinh_anh'=>'p7.jpg', 'tom_tat'=>'Kaguya-sama: Love is war', 'trailer'=>'Q6iK6DjV_iE' ]
         ]);
     }
     public function RapSeeder()
