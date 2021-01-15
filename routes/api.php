@@ -60,7 +60,7 @@ Route::group(['prefix' => 'ajax'], function () {
 });
 Route::get('/suat-chieu', 'ApiController@danh_sach_suat_chieu')->name('suat-chieu');
 Route::get('/lich-chieu', 'ApiController@danh_sach_lich_chieu')->name('lich-chieu');
-Route::get('/ve', 'ApiController@danh_sach_ve')->name('ve');
+Route::get('/ve/{id}', 'ApiController@danh_sach_ve')->name('ve/{id}');
 Route::get('/phim-theloai/{id}', 'ApiController@phim_theloai')->name('phim-theloai/{id}');
 Route::get('/chitiet-lichchieu/{id}', 'ApiController@chitiet_lichchieu')->name('chitiet-lichchieu/{id}');
 

@@ -106,11 +106,11 @@ class ApiController extends Controller
         return json_encode($req);
     }
 
-    public function danh_sach_ve()
+    public function danh_sach_ve($id)
     {
         $Ve = DB::select('select v.id, kh.ten, CONCAT(g.hang,g.cot) as ghe, p.ten_phim AS Phim,p.thoi_luong AS ThoiLuong, sc.ngay_chieu AS Ngay, sc.gio_chieu AS gio, r.ten_rap AS Rap , cn.dia_chi DiaChi, v.gia_ve
         from ves v,ghes g, khach_hangs kh, lich_chieus lc, phims p , suat_chieus sc , raps r, chi_nhanhs cn
-        where v.id_ghe=g.id and v.id_khach_hang=kh.id AND v.id_lich_chieu=lc.id AND lc.id_phim= p.id AND lc.id_suat_chieu = sc.id AND lc.id_rap=r.id AND r.id_chi_nhanh = cn.id  and v.id_khach_hang = ?', [1]);
+        where v.id_ghe=g.id and v.id_khach_hang=kh.id AND v.id_lich_chieu=lc.id AND lc.id_phim= p.id AND lc.id_suat_chieu = sc.id AND lc.id_rap=r.id AND r.id_chi_nhanh = cn.id  and v.id_khach_hang = ?', [$id]);
         return response()->json($Ve, Response::HTTP_OK);
     }
 }
