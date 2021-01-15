@@ -85,3 +85,10 @@ Route::group(['prefix'=>'pages'], function() {
         Route::post('them-suatchieu', 'HomeController@ThemSuatChieu')->name('them-suatchieu');
     });
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
