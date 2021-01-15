@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class rap extends Model
 {
     protected $table = 'raps';
+    protected $primaryKey = 'id';
     protected $fillable = ['id', 'ten_rap', 'so_luong_ghe', 'id_chi_nhanh', 'trang_thai'];
 
     public function chi_nhanh()

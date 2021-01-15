@@ -14,9 +14,11 @@
             <tr>
                 <th scope="col">Tên khách hàng</th>
                 <th scope="col">Tên phim</th>
-                <th scope="col">Tên rạp</th>
                 <th scope="col">Giờ chiếu phim</th>
                 <th scope="col">Ngày chiếu phim</th>
+                <th scope="col">Tên rạp</th>
+                <th scope="col">Ghế</th>
+                <th scope="col">Giá vé</th>
             </tr>
         </thead>
 
@@ -24,10 +26,12 @@
             @foreach($dsve as $item)
             <tr>
                 <td>{{$item->khach_hang->ten}}</td>
-                <td>{{$item->suat_chieu->phim->ten_phim}}</td>
-                <td>{{$item->suat_chieu->rap->chi_nhanh->ten_chi_nhanh}}</td>
-                <td>{{$item->suat_chieu->gio_chieu}}</td>
-                <td>{{$item->suat_chieu->ngay_chieu}}</td>
+                <td>{{$item->lich_chieu->phim->ten_phim}}</td>
+                <td>{{$item->lich_chieu->suat_chieu->gio_chieu}}</td>
+                <td>{{$item->lich_chieu->suat_chieu->ngay_chieu}}</td>
+                <td>{{$item->lich_chieu->rap->ten_rap}}</td>
+                <td>{{$item->ghe->hang}}{{$item->ghe->cot}}</td>
+                <td>{{$item->gia_ve}}</td>
             </tr>
             @endforeach
         </tbody>

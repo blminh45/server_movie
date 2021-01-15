@@ -15,19 +15,32 @@
             </div>
 
             <div class="form-group">
-                <label for="select-phim">Danh sách suất chiếu</label>
-                <select class="form-control" id="select-phim" name="suat_chieu" onchange="show()">
-                    @foreach($ds_suat_chieu as $item)
-                    <optgroup label="{{$item->phim->ten_phim}}">
-                        <option text-align:center value="{{ $item->id }}">
-                            R?p : {{$item->rap->chi_nhanh->ten_chi_nhanh}}
-                            Gi? chi?u : {{$item->gio_chieu}}
-                            Ngày chi?u : {{$item->ngay_chieu}}
+                <label for="select-phim">Danh sách lịch chiếu</label>
+                <select class="form-control" id="select-lichchieu" name="lich_chieu">
+                    @foreach($ds_lich_chieu as $item)
+                    <optgroup label="Tên phim : {{$item->phim->ten_phim}}">
+                        <option value="{{ $item->id }}">
+                            Giờ chiếu : {{$item->suat_chieu->gio_chieu}} : Ngày chiếu :
+                            {{$item->suat_chieu->ngay_chieu}}
                         </option>
                         @endforeach
                 </select>
             </div>
-            <button type="sumbit">G?i</button>
+
+
+
+
+            <div class="form-group">
+                <label for="select-phim">Danh sách ghế</label>
+                <select class="form-control" id="select-ghe " name="ghe">
+                    @foreach($ds_ghe as $item)
+                    <option value="{{ $item->id }}">
+                        Ghế : {{$item->hang}}{{$item->cot}}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
+            <button type="sumbit">Gửi</button>
         </div>
     </form>
 </section>
