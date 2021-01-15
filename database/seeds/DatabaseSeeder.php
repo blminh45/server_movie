@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
         $this->TheLoaiSeeder();
         $this->PhimSeeder();
         $this->SuatChieuSeeder();
+        $this->call([
+            BankSeeder::class,
+            UserSeeder::class
+        ]);
     }
 
     public function KhachHangSeeder()
