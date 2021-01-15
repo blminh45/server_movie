@@ -211,6 +211,6 @@ class HomeController extends Controller
         $ghes = ghe::find($request->ghe);
         $ves->gia_ve = $lich_chieus->gia_lich_chieu + $ghes->gia_ghe;
         $ves->save();
-        return redirect()->action('HomeController@danh_sach_ve');
+        return json_encode($ves, 200);
     }
 }
