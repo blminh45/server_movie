@@ -113,4 +113,12 @@ class ApiController extends Controller
         where v.id_ghe=g.id and v.id_khach_hang=kh.id AND v.id_lich_chieu=lc.id AND lc.id_phim= p.id AND lc.id_suat_chieu = sc.id AND lc.id_rap=r.id AND r.id_chi_nhanh = cn.id  and v.id_khach_hang = ?', [1]);
         return response()->json($Ve, Response::HTTP_OK);
     }
+
+    public function ChiTietLichChieu(){
+        $kq = rap::join('lich_chieus', 'raps.id', '=', 'lich_chieus.id_rap')
+        ->join('chi_nhanhs', 'raps.id_chi_nhanh', '=', 'chi_nhanhs.id')
+        ->join('suat_chieus', 'suat_chieus.id', '=', 'lich_chieus.id_suat_chieu')
+        ->get(['lich_chieus.*', 'raps.ten_rap', 'chi_nhanhs.id', 'chi_nhanhs.ten_chi_nhanh', 'suat_chieus.*']);
+        return json_encode($kq);
+    }
 }
