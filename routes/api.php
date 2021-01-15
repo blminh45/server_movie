@@ -58,11 +58,11 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::post('cap-nhat-chi-nhanh', 'AjaxController@CapNhatChiNhanh')->name('cap-nhat-chi-nhanh');
     Route::post('xoa-chi-nhanh', 'AjaxController@XoaChiNhanh')->name('xoa-chi-nhanh');
 });
-
 Route::get('/chitietlichchieu', 'ApiController@ChiTietLichChieu')->name('chitietlichchieu');
 Route::get('/suat-chieu', 'ApiController@danh_sach_suat_chieu')->name('suat-chieu');
 Route::get('/lich-chieu', 'ApiController@danh_sach_lich_chieu')->name('lich-chieu');
 Route::get('/ve', 'ApiController@danh_sach_ve')->name('ve');
+Route::get('/ve/{id}', 'ApiController@danh_sach_ve_kh')->name('ve/{id}');
 Route::get('/phim-theloai/{id}', 'ApiController@phim_theloai')->name('phim-theloai/{id}');
 Route::get('/chitiet-lichchieu/{id}', 'ApiController@chitiet_lichchieu')->name('chitiet-lichchieu/{id}');
 
