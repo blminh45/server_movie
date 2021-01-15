@@ -12,6 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(BankSeeder::class);
+        $this->call(UserSeeder::class);
         $this->KhachHangSeeder();
         $this->ChiNhanhSeeder();
         $this->GheSeeder();
@@ -24,11 +26,11 @@ class DatabaseSeeder extends Seeder
     public function KhachHangSeeder()
     {
         DB::table('khach_hangs')->insert([
-            [ 'ten'=>'Minh', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181245','ngay_sinh'=>'2000-1-1','email'=>'0306181245@caothang.edu.vn','gioi_tinh'=>'Nam','anh_dai_dien'=>'A','mat_khau'=>'Minh45' ],
-            [ 'ten'=>'Phú', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181257','ngay_sinh'=>'2000-1-1','email'=>'0306181257@caothang.edu.vn','gioi_tinh'=>'Nam','anh_dai_dien'=>'B','mat_khau'=>'Phu57' ],
-            [ 'ten'=>'Tâm', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181272','ngay_sinh'=>'2000-1-1','email'=>'0306181272@caothang.edu.vn','gioi_tinh'=>'Nam','anh_dai_dien'=>'C','mat_khau'=>'Tam72' ],
-            [ 'ten'=>'Toàn', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181281','ngay_sinh'=>'2000-1-1','email'=>'0306181281@caothang.edu.vn','gioi_tinh'=>'Nam','anh_dai_dien'=>'D','mat_khau'=>'Toan81' ],
-            [ 'ten'=>'Tuấn', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181290','ngay_sinh'=>'2000-1-1','email'=>'0306181290@caothang.edu.vn','gioi_tinh'=>'Nam','anh_dai_dien'=>'E','mat_khau'=>'TuanTuan90' ],
+            [ 'ten'=>'Minh', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181245','ngay_sinh'=>'2000-1-1','email'=>'0306181245@caothang.edu.vn','anh_dai_dien'=>'A','mat_khau'=>'Minh45' ],
+            [ 'ten'=>'Phú', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181257','ngay_sinh'=>'2000-1-1','email'=>'0306181257@caothang.edu.vn','anh_dai_dien'=>'B','mat_khau'=>'Phu57' ],
+            [ 'ten'=>'Tâm', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181272','ngay_sinh'=>'2000-1-1','email'=>'0306181272@caothang.edu.vn','anh_dai_dien'=>'C','mat_khau'=>'Tam72' ],
+            [ 'ten'=>'Toàn', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181281','ngay_sinh'=>'2000-1-1','email'=>'0306181281@caothang.edu.vn','anh_dai_dien'=>'D','mat_khau'=>'Toan81' ],
+            [ 'ten'=>'Tuấn', 'dia_chi'=>'HCM', 'so_dien_thoai'=>'0306181290','ngay_sinh'=>'2000-1-1','email'=>'0306181290@caothang.edu.vn','anh_dai_dien'=>'E','mat_khau'=>'TuanTuan90' ],
         ]);
     }
 
@@ -83,9 +85,9 @@ class DatabaseSeeder extends Seeder
     public function PhimSeeder()
     {
         DB::table('phims')->insert([
-            [ 'ten_phim'=>'Koe no katachi', 'id_the_loai'=>1, 'thoi_luong'=>130 ],
-            [ 'ten_phim'=>'Kimi no na wa', 'id_the_loai'=>2, 'thoi_luong'=>106 ],
-            [ 'ten_phim'=>'Kaguya-sama: Love is war', 'id_the_loai'=>5, 'thoi_luong'=>24 ]
+            [ 'ten_phim'=>'Koe no katachi', 'id_the_loai'=>1, 'thoi_luong'=>130, 'diem'=>8, 'tuoi'=>16, 'hinh_anh'=>'A_Silent_Voice_Film_Poster.jpg', 'tom_tat'=>'A_Silent_Voice_Film_Poster', 'trailer'=>'Q6iK6DjV_iE' ],
+            [ 'ten_phim'=>'Kimi no na wa', 'id_the_loai'=>2, 'thoi_luong'=>106, 'diem'=>8, 'tuoi'=>16, 'hinh_anh'=>'p12.jpg', 'tom_tat'=>'Kimi no na wa', 'trailer'=>'Q6iK6DjV_iE' ],
+            [ 'ten_phim'=>'Kaguya-sama: Love is war', 'id_the_loai'=>5, 'thoi_luong'=>24, 'diem'=>8, 'tuoi'=>16, 'hinh_anh'=>'p7.jpg', 'tom_tat'=>'Kaguya-sama: Love is war', 'trailer'=>'Q6iK6DjV_iE' ]
         ]);
     }
     public function RapSeeder()

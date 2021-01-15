@@ -43,8 +43,24 @@ class HomeController extends Controller
 //the loai
     public function danh_sach_theloai()
     {
-        $the_loais = the_loai::all();
+        $the_loais = the_loai::where('trang_thai', 1)->get();
         return view('pages.the_loai.danh-sach-theloai')->with("dstheloai", $the_loais);
+    }
+
+//chi nhanh
+    public function danh_sach_chinhanh()
+    {
+        $dschi_nhanh = chi_nhanh::where('trang_thai', 1)->get();
+        return view('pages.rap_phim.danh-sach-chinhanh')->with("dschinhanh", $dschi_nhanh);
+    }
+
+//rap
+    public function danh_sach_rap()
+    {
+        $c_nhanh = chi_nhanh::where('trang_thai', 1)->get();
+        $dsrap = rap::where('trang_thai', '<>', 0)->get();
+
+        return view('pages.rap_phim.danh-sach-rap', ["dsrap"=>$dsrap, "dschi_nhanh"=>$c_nhanh]);
     }
 
 //suat chieu
@@ -56,45 +72,6 @@ class HomeController extends Controller
     public function them_suatchieu()
     {
         return view('pages.suat_chieu.them-suatchieu');
-    }
-
-//rap
-    public function danh_sach_rap()
-    {
-        $c_nhanh = chi_nhanh::all();
-        $dsrap = rap::all();
-
-        return view('pages.rap_phim.danh-sach-rap', ["dsrap"=>$dsrap]);//->with("dsrap", $dsrap);
-    }
-
-    public function them_rap()
-    {
-        $dschi_nhanh = chi_nhanh::where('trang_thai', 1)->get();
-        return view('pages.rap_phim.them-rap', ['dschi_nhanh' => $dschi_nhanh]);
-    }
-
-    public function cap_nhat_rap($id)
-    {
-        $raps = rap::find($id);
-        return view('pages.rap_phim.cap-nhat-rap')->with("capnhatrap", $raps);
-    }
-
-//chi nhanh
-    public function danh_sach_chinhanh()
-    {
-        $dschi_nhanh = chi_nhanh::where('trang_thai', 1)->get();
-        return view('pages.rap_phim.danh-sach-chinhanh')->with("dschinhanh", $dschi_nhanh);
-    }
-
-    public function them_chinhanh()
-    {
-        return view('pages.rap_phim.them-chinhanh');
-    }
-
-    public function cap_nhat_chinhanh($id)
-    {
-        $chi_nhanhs = chi_nhanh::find($id);
-        return view('pages.rap_phim.cap-nhat-chi-nhanh')->with("capnhatchinhanh", $chi_nhanhs);
     }
 
 //thanh vien

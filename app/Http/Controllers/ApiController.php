@@ -6,19 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\phim;
 use App\the_loai;
+use App\khach_hang;
+use App\rap;
+use App\chi_nhanh;
+use App\ghe;
 
 class ApiController extends Controller
 {
     public function danh_sach_phim()
     {
-        $phims = phim::all();
+        $phims = phim::where('trang_thai', 1)->get();
         return response()->json($phims, Response::HTTP_OK);
-    }
-
-    public function them_phim(Request $req)
-    {
-        $phim = phim::create($req->all());
-        return response()->json($phim, 201);
     }
 
     public function tim_phim($id)
@@ -27,65 +25,44 @@ class ApiController extends Controller
         return response()->json($phim, 200);
     }
 
-    public function sua_phim(Request $req, $id)
-    {
-        $phim = phim::where('id', $id)->update($req->all());
-        return response()->json($phim, 200);
-    }
-
-    public function destroy($id, Request $req)
-    {
-        $phim = phim::where('id', $id)->update($req->all());
-        return response()->json($phim, 200);
-    }
-
     public function danh_sach_the_loai(){
         return response()->json(the_loai::all(), 200);
     }
 
-    // public function ThemKhachHang(Request $request)
-    // {
-    //     $img_name = "g8.jpg";
-    //     if ($request->hasFile('hinhdaidien')) {
-    //         $file = $request->file('hinhdaidien');
-    //         $img_name = $file->getClientOriginalName('hinhdaidien');
-    //         $file->move('images', $img_name);
-    //     }
+    public function DanhSachKhachHang(){
+        return response()->json(khach_hang::all(),200);
+    }
 
-    //     $khach_hangs = new khach_hang;
-    //     $khach_hangs->ten = $request->tenkhachhang;
-    //     $khach_hangs->dia_chi = $request->diachiKH;
-    //     $khach_hangs->so_dien_thoai = $request->sodienthoai;
-    //     $khach_hangs->gioi_tinh = $request->gioitinh;
-    //     $khach_hangs->anh_dai_dien = $img_name;
-    //     $khach_hangs->email = $request->email;
-    //     $password = bcrypt('$request->matkhau');
-    //     $khach_hangs->mat_khau = $password;
+    public function danh_sach_rap(){
+        return json_encode(rap::all(), 200);
+    }
 
-    //     $khach_hangs->save();
-    //     return redirect()->action('HomeController@danh_sach_thanh_vien');
-    // }
+    public function danh_sach_ghe(){
+        return json_encode(ghe::all(), 200);
+    }
 
-    // public function SuaKhachHang(Request $request, $id)
-    // {
-    //     $img_name = khach_hang::find($id)->hinhdaidien;
-    //     if ($request->hasFile('hinhdaidien')) {
-    //         $file = $request->file('hinhdaidien');
-    //         $img_name = $file->getClientOriginalName('hinhdaidien');
-    //         $file->move('images', $img_name);
-    //     }
+    public function danh_sach_chi_nhanh(){
+        return json_encode(chi_nhanh::all(), 200);
+        // $result = chi_nhanh::join('raps', 'chi_nhanhs.id', '=', 'raps.id_chi_nhanh')->get();
+        // return response()->json($result, Response::HTTP_OK);
+    }
+    public function them_kh(Request $request){
+        $kh = new khach_hang;
+        $kh->ten = $request->ten;
+        $kh->dia_chi = $request->dia_chi;
+        $kh->ngay_sinh = $request->ngay_sinh;
+        $kh->so_dien_thoai = $request->so_dien_thoai;
+        $kh->anh_dai_dien = $request->anh_dai_dien;
+        $kh->mat_khau = $request->mat_khau;
+        $kh->email = $request->email;
+        $kh->trang_thai = $request->trang_thai = 1;
+        $kh->save();
 
-    //     $khach_hangs = khach_hang::find($id);
-    //     $khach_hangs->ten = $request->tenkhachhang;
-    //     $khach_hangs->dia_chi = $request->diachiKH;
-    //     $khach_hangs->so_dien_thoai = $request->sodienthoai;
-    //     $khach_hangs->gioi_tinh = $request->gioitinh;
-    //     $khach_hangs->anh_dai_dien = $img_name;
-    //     $khach_hangs->email = $request->email;
-    //     $password = bcrypt('$request->matkhau');
-    //     $khach_hangs->mat_khau = $password;
+        return response()->json(['mess'=>'true']);
+        //return response()->json(khach_hang::create($req->all()),200);
+    }
 
-    //     $khach_hangs->save();
-    //     return redirect()->action('HomeController@danh_sach_thanh_vien');
-    // }
+    public function ThanhToan(Request $req){
+        return json_encode($req);
+    }
 }
