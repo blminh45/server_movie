@@ -19,7 +19,7 @@ class CreateDanhSachGheChonsTable extends Migration
             $table->integer('id_lich_chieu')->unsigned();
             $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
-            
+
             //foreign key
             $table->foreign('id_lich_chieu')->references('id')->on('lich_chieus');
         });

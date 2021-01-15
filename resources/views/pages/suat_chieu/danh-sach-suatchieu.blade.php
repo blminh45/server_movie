@@ -12,26 +12,36 @@
     <table class="table table-all">
         <thead class="thead-dark table-all-dark">
             <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Rạp</th>
-                <th scope="col">Phim</th>
                 <th scope="col">Giờ</th>
                 <th scope="col">Ngày</th>
+                <th scope="col">Giá tiền</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
             </tr>
         </thead>
-
         <tbody>
-            @for($i=0;$i<15;$i++)
+            @foreach($ds_suat_chieu as $item)
             <tr>
-                <td scope="row">{{ $i+1 }}</td>
-                <td scope="col">Tân Bình</td>
-                <td scope="col">Đứa con thởi tiết</td>
-                <td scope="col">6:30</td>
-                <td scope="col">24-12-2020</td>
+                <th> {{$item->gio_chieu}}</th>
+                <th> {{$item->ngay_chieu}}</th>
+                <th> {{$item->gia_suat_chieu}}</th>
+                <td><a type="submit" href="/pages/suat-chieu/sua-suatchieu/{{$item->id}}"
+                        class="btn btn-success">Update</a>
+                </td>
+                <td><a type="submit" href="/pages/suat-chieu/xoa-suatchieu/{{$item->id}}"
+                        class="btn btn-success">Delete</a>
+                </td>
             </tr>
-            @endfor
+            @endforeach
+
+
         </tbody>
     </table>
+
 </section>
+
+<!-- footer -->
+@include('includes.footer')
+<!-- / footer -->
 
 @endsection

@@ -18,7 +18,7 @@ class CreateBanksTable extends Migration
             $table->primary('STK');
             $table->string('ten_chu_the');
             $table->string('mat_khau');
-            $table->decimal('so_du');
+            $table->unsignedDecimal('so_du', 12, 0);
             $table->timestamps();
         });
     }

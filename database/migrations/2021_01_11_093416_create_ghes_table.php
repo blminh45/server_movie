@@ -15,9 +15,9 @@ class CreateGhesTable extends Migration
     {
         Schema::create('ghes', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('hang',1);
+            $table->char('hang', 1);
             $table->tinyInteger('cot');
-            $table->unsignedDecimal('gia_ghe',6,2)->default(40);
+            $table->unsignedDecimal('gia_ghe', 10, 0);
             $table->tinyInteger('trang_thai')->default(1);
             $table->timestamps();
         });
