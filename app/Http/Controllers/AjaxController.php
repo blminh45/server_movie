@@ -35,6 +35,7 @@ class AjaxController extends Controller
         $phim->thoi_luong = $req["thoiluong"];
         $phim->trailer = $req["trailer"];
         $phim->tom_tat = $req["tomtat"];
+        $phim->gia_phim = $req["gia_phim"];
         $phim->hinh_anh = $req["hinhanh"];
 
         $phim->save();
@@ -48,6 +49,7 @@ class AjaxController extends Controller
         $resPhim->thoi_luong = $phim->thoi_luong;
         $resPhim->trailer = $phim->trailer;
         $resPhim->tom_tat  = $phim->tom_tat;
+        $resPhim->gia_phim  = $phim->gia_phim;
         $resPhim->hinh_anh = $phim->hinh_anh;
 
         return json_encode($resPhim);
@@ -62,6 +64,7 @@ class AjaxController extends Controller
             'thoi_luong' => $req["thoiluong"],
             'trailer' => $req["trailer"],
             'tom_tat' => $req["tomtat"],
+            'gia_phim' => $req["gia_phim"],
             'hinh_anh' => $req["hinhanh"]
         ]);
 
@@ -75,6 +78,7 @@ class AjaxController extends Controller
         $resPhim->the_loai->ten_the_loai = the_loai::find($res->id_the_loai)->ten_the_loai;
         $resPhim->thoi_luong = $res->thoi_luong;
         $resPhim->trailer = $res->trailer;
+        $resPhim->gia_phim  = $res->gia_phim;
         $resPhim->tom_tat  = $res->tom_tat;
         $resPhim->hinh_anh = $res->hinh_anh;
 

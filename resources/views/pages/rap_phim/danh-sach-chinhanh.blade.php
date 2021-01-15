@@ -51,7 +51,6 @@
                 @endphp
                 @foreach($dschinhanh as $item)
                 <tr id="{{ $item->id }}" class="warning">
-                    <td>{{ $stt++ }}</td>
                     <td class="rowTen">{{ $item->ten_chi_nhanh }}</td>
                     <td class="rowDiaChi">{{ $item->dia_chi }}</td>
                     <td>
@@ -112,10 +111,8 @@
                     console.log("create success: " + data);
                     console.log("create success: "+JSON.parse(data));
                     var result = JSON.parse(data);
-                    var stt = <?php echo $stt;?>;
-                    console.log(stt);
 
-                    $('table tbody').append("<tr id='"+result.id+"' class='warning'><td>"+stt+"</td><td class='rowTen'>"+result.ten_chi_nhanh+"</td><td class='rowDiaChi'>"+result.dia_chi+"</td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Cập nhật</span></button></td><td><button type='button' class='btn btn-default btn-lg btnDelete'><i class='glyphicon glyphicon-trash'></i><span>Xóa</span></button></td></tr>");
+                    $('table tbody').append("<tr id='"+result.id+"' class='warning'><td class='rowTen'>"+result.ten_chi_nhanh+"</td><td class='rowDiaChi'>"+result.dia_chi+"</td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Cập nhật</span></button></td><td><button type='button' class='btn btn-default btn-lg btnDelete'><i class='glyphicon glyphicon-trash'></i><span>Xóa</span></button></td></tr>");
                 },
                 error: function(err){
                     console.log("fail: "+err);
@@ -214,10 +211,6 @@
                 },
                 success: function(data){
                     $("#"+id).remove();
-                    var stt = <?php echo $stt; ?>;
-                    console.log(stt);
-                    stt--;
-                    console.log(stt);
                 },
                 error: function(err){
                     console.log("error: "+err);

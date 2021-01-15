@@ -50,7 +50,6 @@
         <table id="tablePhim" class="table table-bordered">
             <thead>
                 <tr class="info">
-                    <th scope="col">STT</th>
                     <th scope="col">Rạp</th>
                     <th scope="col">Số ghế</th>
                     <th scope="col">Chi nhánh</th>
@@ -63,7 +62,6 @@
             <tbody id="tableBody">
                 @foreach($dsrap as $item)
                 <tr id="{{ $item->id }}" class="warning">
-                    <td class="rowId">{{ $item->id }}</td>
                     <td class="rowTenRap">{{ $item->ten_rap }}</td>
                     <td class="rowSLGhe">{{ $item->so_luong_ghe }}</td>
                     <td class="rowChiNhanh">{{ $item->chi_nhanh->ten_chi_nhanh }}</td>
@@ -163,7 +161,7 @@
                     console.log("create success: "+JSON.parse(data));
                     var result = JSON.parse(data);
 
-                    $('table tbody').append("<tr id='"+result.id+"' class='warning'><td class='rowId'>"+result.id+"</td><td class='rowTenRap'>"+result.ten_rap+"</td><td class='rowSLGhe'>"+result.so_luong_ghe+"</td><td class='rowChiNhanh'>"+result.chi_nhanh.ten_chi_nhanh+"</td><td><label class='switch'><input type='checkbox' checked value='"+result.trang_thai+"'><span class='slider round'></span></label></td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Cập nhật</span></button></td><td><button type='button' class='btn btn-default btn-lg btnDelete'><i class='glyphicon glyphicon-trash'></i><span>Xóa</span></button></td></tr>");
+                    $('table tbody').append("<tr id='"+result.id+"' class='warning'><td class='rowTenRap'>"+result.ten_rap+"</td><td class='rowSLGhe'>"+result.so_luong_ghe+"</td><td class='rowChiNhanh'>"+result.chi_nhanh.ten_chi_nhanh+"</td><td><label class='switch'><input type='checkbox' checked value='"+result.trang_thai+"'><span class='slider round'></span></label></td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Cập nhật</span></button></td><td><button type='button' class='btn btn-default btn-lg btnDelete'><i class='glyphicon glyphicon-trash'></i><span>Xóa</span></button></td></tr>");
                 },
                 error: function(err){
                     console.log("fail: "+err);
@@ -230,7 +228,7 @@
                     $('#modalRap').modal('hide');
 
                     $("#tableBody > tbody > tr").each(function(){
-                        if($(this).find(".rowId").html() == result.id){
+                        if($(this).attr('id') == result.id){
                             $(this).find(".rowTenRap").text(result.ten_rap);
                             $(this).find(".rowSLGhe").text(result.so_luong_ghe);
                         }
@@ -250,7 +248,7 @@
         $('#titleModal').html("Xóa rạp");
         $('#btnDeleteModal').removeClass('hidden');
 
-        var id = $(this).closest("tr").find(".rowId").text();
+        var id = $(this).closest("tr").attr('id');
         console.log("id: "+id);
         var index = $(this).closest("tr").attr("id");
         console.log("index: "+$(this).closest("tr").attr("id"));

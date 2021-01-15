@@ -25,8 +25,12 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="modalGia">Giá</label>
+                        <input type="number" class="form-control" id="modalGia" placeholder="Giá" name="gia">
+                    </div>
+                    <div class="form-group">
                         <label for="modalThoiLuong">Thời lượng</label>
-                        <input type="text" class="form-control" id="modalThoiLuong" placeholder="Thời lượng" name="thoiluong">
+                        <input type="number" class="form-control" id="modalThoiLuong" placeholder="Thời lượng" name="thoiluong">
                     </div>
                     <div class="form-group">
                         <label for="modalTrailer">Trailer</label>
@@ -63,6 +67,7 @@
                     <th>Hình ảnh</th>
                     <th>Thể loại</th>
                     <th>Thời lượng</th>
+                    <th>Giá</th>
                     <th>Nội dung</th>
                     <th>Cập nhật</th>
                     <th>Xóa</th>
@@ -76,6 +81,7 @@
                     <td class="rowHinhAnh" style="width: 200px;"><img width="25%" src="/images/{{ $u->hinh_anh }}"></td>
                     <td class="rowTheLoai">{{ $u->the_loai->ten_the_loai }}</td>
                     <td class="rowThoiLuong">{{ $u->thoi_luong }}</td>
+                    <td class="rowGia">{{ $u->gia_phim }}</td>
                     <td class="rowNoiDung">{{ $u->tom_tat }}</td>
                     <td>
                         <button type="button" class="btn btn-success btn-lg btnEdit">
@@ -105,6 +111,7 @@
         $('#modalNoiDung').val("");
         $('#modalHinhAnh').val("");
         $('#modalThoiLuong').val("");
+        $('#modalGia').val("");
         $('#select-theloai').val("");
         $('#modalTrailer').val("");
     }
@@ -130,6 +137,7 @@
         var hinh = arr[arr.length-1];
         console.log("get hinh in modal:"+hinh);
         var thoiluong = $('#modalThoiLuong').val();
+        var gia = $('#modalGia').val();
         var theloai = $('#select-theloai').val();
         var trailer = $('#modalTrailer').val();
         var phim = {
@@ -137,6 +145,7 @@
             "tomtat": noidung,
             "hinhanh": hinh,
             "thoiluong": thoiluong,
+            "gia_phim": gia,
             "theloai": theloai,
             "trailer": trailer
         }
@@ -166,7 +175,7 @@
                     console.log("create success: "+JSON.parse(data));
                     var result = JSON.parse(data);
 
-                    $('table tbody').append("<tr id='"+result.id+"' class='warning'><td style='display: none;' class='rowId'>"+result.id+"</td><td class='rowTenPhim'>"+result.ten_phim+"</td><td class='rowHinhAnh' style='width: 200px;'><img width='25%' src='/images/"+result.hinh_anh+"'></td><td class='rowTheLoai'>"+result.the_loai.ten_the_loai+"</td><td class='rowThoiLuong'>"+result.thoi_luong+"</td><td class='rowNoiDung'>"+result.tom_tat+"</td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Cập nhật</span></button></td><td><button type='button' class='btn btn-default btn-lg btnDelete'><i class='glyphicon glyphicon-trash'></i><span>Xóa</span></button></td></tr>");
+                    $('table tbody').append("<tr id='"+result.id+"' class='warning'><td style='display: none;' class='rowId'>"+result.id+"</td><td class='rowTenPhim'>"+result.ten_phim+"</td><td class='rowHinhAnh' style='width: 200px;'><img width='25%' src='/images/"+result.hinh_anh+"'></td><td class='rowTheLoai'>"+result.the_loai.ten_the_loai+"</td><td class='rowThoiLuong'>"+result.thoi_luong+"</td><td class='rowGia'>"+result.gia_phim+"</td><td class='rowNoiDung'>"+result.tom_tat+"</td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Cập nhật</span></button></td><td><button type='button' class='btn btn-default btn-lg btnDelete'><i class='glyphicon glyphicon-trash'></i><span>Xóa</span></button></td></tr>");
                 },
                 error: function(err){
                     console.log("fail: "+err);
@@ -189,6 +198,7 @@
                 $('#modalTenPhim').val(phim.ten_phim);
                 $('#modalNoiDung').val(phim.tom_tat);
                 $('#modalHinhAnh').attr('src', '/images/'+phim.hinh_anh);
+                $('#modalGia').val(phim.gia_phim);
                 $('#modalTrailer').val(phim.trailer);
                 $('#modalThoiLuong').val(phim.thoi_luong);
                 $('#select-theloai').val(phim.id_the_loai);
@@ -237,6 +247,7 @@
                             $(this).find(".rowTheLoai").text(result.the_loai.ten_the_loai);
                             $(this).find(".rowThoiLuong").text(result.thoi_luong);
                             $(this).find(".rowNoiDung").text(result.tom_tat);
+                            $(this).find(".rowGia").text(result.gia_phim);
                         }
                     })
                 },
