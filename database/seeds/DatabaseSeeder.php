@@ -37,11 +37,11 @@ class DatabaseSeeder extends Seeder
     public function KhachHangSeeder()
     {
         DB::table('khach_hangs')->insert([
-            ['ten' => 'Minh', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181245', 'ngay_sinh' => '2000-1-1', 'email' => '0306181245@caothang.edu.vn', 'anh_dai_dien' => 'A', 'mat_khau' => 'Minh45'],
-            ['ten' => 'Phú', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181257', 'ngay_sinh' => '2000-1-1', 'email' => '0306181257@caothang.edu.vn', 'anh_dai_dien' => 'B', 'mat_khau' => 'Phu57'],
-            ['ten' => 'Tâm', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181272', 'ngay_sinh' => '2000-1-1', 'email' => '0306181272@caothang.edu.vn', 'anh_dai_dien' => 'C', 'mat_khau' => 'Tam72'],
-            ['ten' => 'Toàn', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181281', 'ngay_sinh' => '2000-1-1', 'email' => '0306181281@caothang.edu.vn', 'anh_dai_dien' => 'D', 'mat_khau' => 'Toan81'],
-            ['ten' => 'Tuấn', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181290', 'ngay_sinh' => '2000-1-1', 'email' => '0306181290@caothang.edu.vn', 'anh_dai_dien' => 'E', 'mat_khau' => 'TuanTuan90'],
+            ['ten' => 'Minh', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181245', 'ngay_sinh' => '2000-1-1', 'email' => '0306181245@caothang.edu.vn', 'anh_dai_dien' => 'A', 'mat_khau' => bcrypt('Minh45')],
+            ['ten' => 'Phú', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181257', 'ngay_sinh' => '2000-1-1', 'email' => '0306181257@caothang.edu.vn', 'anh_dai_dien' => 'B', 'mat_khau' => bcrypt('Phu57')],
+            ['ten' => 'Tâm', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181272', 'ngay_sinh' => '2000-1-1', 'email' => '0306181272@caothang.edu.vn', 'anh_dai_dien' => 'C', 'mat_khau' => bcrypt('Tam72')],
+            ['ten' => 'Toàn', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181281', 'ngay_sinh' => '2000-1-1', 'email' => '0306181281@caothang.edu.vn', 'anh_dai_dien' => 'D', 'mat_khau' => bcrypt('Toan81')],
+            ['ten' => 'Tuấn', 'dia_chi' => 'HCM', 'so_dien_thoai' => '0306181290', 'ngay_sinh' => '2000-1-1', 'email' => '0306181290@caothang.edu.vn', 'anh_dai_dien' => 'E', 'mat_khau' => bcrypt('TuanTuan90')],
         ]);
     }
 
