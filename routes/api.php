@@ -66,4 +66,5 @@ Route::post('/thanh-toan', 'ApiController@ThanhToan')->name('thanh-toan');
 //bank
 Route::group(['prefix'=>'bank'], function() {
     Route::get('tai-khoan', 'BankController@ThongTinTaiKhoan')->name('tai-khoan');
+    Route::get('thanh-toan', 'BankController@TruSoDu')->name('thanh-toan');
 });
