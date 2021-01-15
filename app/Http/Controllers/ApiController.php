@@ -10,7 +10,9 @@ use App\khach_hang;
 use App\rap;
 use App\chi_nhanh;
 use App\ghe;
+use App\lich_chieu;
 use App\suat_chieu;
+use Hamcrest\Core\HasToString;
 
 class ApiController extends Controller
 {
@@ -24,7 +26,10 @@ class ApiController extends Controller
     {
         return json_encode(suat_chieu::all(), 200);
     }
-
+    public function danh_sach_lich_chieu()
+    {
+        return json_encode(lich_chieu::all(), 200);
+    }
     public function tim_phim($id)
     {
         $phim = phim::find($id);
@@ -72,6 +77,27 @@ class ApiController extends Controller
 
         return response()->json(['mess' => 'true']);
         //return response()->json(khach_hang::create($req->all()),200);
+    }
+
+
+    public function phim_theloai($id)
+    {
+
+        $phim = phim::find($id);
+        $theloai = the_loai::find($phim->id_the_loai);
+        $arrays[] =  [$phim, $theloai];
+        return json_encode($arrays);
+    }
+
+    public function chitiet_lichchieu($id)
+    {
+
+        $lichchieu = lich_chieu::find($id);
+        $phim = phim::find($lichchieu->id_phim);
+        $rap = rap::find($lichchieu->id_rap);
+        $suatchieu = suat_chieu::find($phim->id_suat_chieu);
+        $arrays[] =  [$lichchieu, $phim, $rap, $suatchieu];
+        return json_encode($arrays);
     }
 
     public function ThanhToan(Request $req)
