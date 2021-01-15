@@ -3,7 +3,7 @@
 @section('noi-dung')
 
 <section class="wrapper">
-    <div id="myModal" class="modal fade" role="dialog">
+    <div id="modalPhim" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -109,7 +109,7 @@
         $('#modalTrailer').val("");
     }
 
-    function removeClassHidden(){
+    function addClassHidden(){
         $('#btnCreateModal').addClass('hidden');
         $('#btnUpdateModal').addClass('hidden');
         $('#btnDeleteModal').addClass('hidden');
@@ -146,12 +146,12 @@
 
     $('#btnCreate').on('click', function(){
         resetInput();
-        removeClassHidden();
+        addClassHidden();
         setElementAttrModal(false);
-        $('#myModal').modal();
+        $('#modalPhim').modal();
         $('#titleModal').html("Thêm mới phim");
         $('#btnCreateModal').removeClass('hidden');
-        $('btnCreateModal').off('click');
+        $('#btnCreateModal').off('click');
         $('#btnCreateModal').on('click', function(){
             $.ajax({
                 type: 'POST',
@@ -166,7 +166,7 @@
                     console.log("create success: "+JSON.parse(data));
                     var result = JSON.parse(data);
 
-                    $('table tbody').append("<tr class='warning'><td style='display: none;' class='rowId'>"+result.id+"</td><td class='rowTenPhim'>"+result.ten_phim+"</td><td class='rowHinhAnh' style='width: 200px;'><img width='25%' src='/images/"+result.hinh_anh+"'></td><td class='rowTheLoai'>"+result.the_loai.ten_the_loai+"</td><td class='rowThoiLuong'>"+result.thoi_luong+"</td><td class='rowNoiDung'>"+result.tom_tat+"</td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Cập nhật</span></button></td><td><button type='button' class='btn btn-default btn-lg btnDelete'><i class='glyphicon glyphicon-trash'></i><span>Xóa</span></button></td></tr>");
+                    $('table tbody').append("<tr id='"+result.id+"' class='warning'><td style='display: none;' class='rowId'>"+result.id+"</td><td class='rowTenPhim'>"+result.ten_phim+"</td><td class='rowHinhAnh' style='width: 200px;'><img width='25%' src='/images/"+result.hinh_anh+"'></td><td class='rowTheLoai'>"+result.the_loai.ten_the_loai+"</td><td class='rowThoiLuong'>"+result.thoi_luong+"</td><td class='rowNoiDung'>"+result.tom_tat+"</td><td><button type='button' class='btn btn-success btn-lg btnEdit'><i class='fa fa-pencil'></i><span>Cập nhật</span></button></td><td><button type='button' class='btn btn-default btn-lg btnDelete'><i class='glyphicon glyphicon-trash'></i><span>Xóa</span></button></td></tr>");
                 },
                 error: function(err){
                     console.log("fail: "+err);
@@ -200,9 +200,9 @@
     }
 
     $('#tablePhim').on('click', '.btnEdit', function(){
-        removeClassHidden();
+        addClassHidden();
         setElementAttrModal(false);
-        $('#myModal').modal();
+        $('#modalPhim').modal();
         $('#titleModal').html("Cập nhật thông tin phim");
         $('#btnUpdateModal').removeClass('hidden');
 
@@ -228,7 +228,7 @@
                     console.log("update success data: "+data);
                     var result = JSON.parse(data);
                     console.log("update success id: "+result.id);
-                    $('#myModal').modal('hide');
+                    $('#modalPhim').modal('hide');
 
                     $("#tablePhim > tbody > tr").each(function(){
                         if($(this).find(".rowId").html() == result.id){
@@ -248,9 +248,9 @@
     });
 
     $('#tablePhim').on('click', '.btnDelete', function(){
-        removeClassHidden();
+        addClassHidden();
         setElementAttrModal(true);
-        $("#myModal").modal();
+        $("#modalPhim").modal();
         $('#titleModal').html("Xóa phim");
         $('#btnDeleteModal').removeClass('hidden');
 
